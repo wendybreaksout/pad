@@ -29,7 +29,15 @@ function pad_custom_header_setup() {
 		'flex-height'            => true,
 		'wp-head-callback'       => 'pad_header_style',
 	) ) );
+
+	// Custom logo
+	add_theme_support( 'custom-logo', array(
+		'height'      => 100,
+		'width'       => 400,
+		'flex-width' => true,
+	) );
 }
+
 add_action( 'after_setup_theme', 'pad_custom_header_setup' );
 
 if ( ! function_exists( 'pad_header_style' ) ) :

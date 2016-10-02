@@ -10,7 +10,27 @@ html {
 
 body {
 	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+	overflow-x: hidden;
+	@include body-font;
 }
+
+/* From agency template */
+.text-muted {
+	color: $gray-light;
+}
+
+.text-primary {
+	color: $theme-primary;
+}
+
+.bg-light-gray {
+  background-color: $gray-lighter;
+}
+
+.bg-darkest-gray {
+  background-color: $gray-darker;
+}
+/* End from agency template */
 
 blockquote, q {
 	quotes: "" "";
@@ -35,8 +55,51 @@ img {
 	max-width: 100%; /* Adhere to container width. */
 }
 
+.img-centered {
+  margin: 0 auto;
+}
+
 figure {
 	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
 }
 
+// Clients Aside
+
+aside.clients {
+  img {
+    margin: 50px auto;
+  }
+}
+
 @import "tables";
+@import "header";
+@import "section";
+@import "portfolio";
+@import "timeline";
+@import "team-member";
+@import "footer";
+
+
+// Highlight Color Customization
+
+::-moz-selection {
+  text-shadow: none;
+  background: $theme-primary;
+}
+
+::selection {
+  text-shadow: none;
+  background: $theme-primary;
+}
+
+img::selection {
+  background: transparent;
+}
+
+img::-moz-selection {
+  background: transparent;
+}
+
+body {
+  -webkit-tap-highlight-color: $theme-primary;
+}

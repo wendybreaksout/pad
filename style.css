@@ -1057,7 +1057,7 @@ a {
 
 @media (min-width: 768px) {
   #site-navigation.navbar-custom {
-    background-color: transparent;
+    background-color: #eeeeee;
     background-image: none;
     padding: 25px 0;
     -webkit-transition: padding 0.3s;
@@ -1071,7 +1071,10 @@ a {
       -moz-transition: all 0.3s;
       transition: all 0.3s; }
     #site-navigation.navbar-custom .navbar-nav > .active > a {
-      border-radius: 3px; } }
+      border-radius: 3px; }
+
+  .home #site-navigation.navbar-custom {
+    background-color: transparent; } }
 @media (min-width: 768px) {
   #site-navigation.navbar-custom.affix {
     background-color: #eeeeee;
@@ -1083,8 +1086,13 @@ a {
 ## Loog
 --------------------------------------------------------------*/
 #pad-logo-container {
-  max-width: 20%;
   margin-top: 15px; }
+
+a.custom-logo-link {
+  margin-bottom: 30px; }
+
+#masthead {
+  text-align: left; }
 
 /*--------------------------------------------------------------
 # Accessibility

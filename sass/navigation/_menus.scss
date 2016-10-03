@@ -165,7 +165,7 @@
 
 @media(min-width:768px) {
 	#site-navigation.navbar-custom {
-		background-color: transparent;
+		background-color: $gray-lighter;
         background-image: none;
 		padding: 25px 0;
 		-webkit-transition: padding 0.3s;
@@ -182,6 +182,9 @@
 		.navbar-nav>.active>a {
 			border-radius: 3px;
 		}
+	}
+	.home #site-navigation.navbar-custom {
+		background-color: transparent;
 	}
 }
 

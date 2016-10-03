@@ -25,55 +25,62 @@
 
     <nav id="site-navigation" class="main-navigation navbar navbar-default navbar-custom navbar-fixed-top affix" role="navigation">
         <div class="container">
-            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'pad' ); ?></button>
-            <div id="pad-logo-container" class="navbar-header">
-                <?php
-                $logo_markup = '<a href="' . esc_url(home_url("/")) . '" class="navbar-brand">'. __('NO LOGO', 'pad') . '</a>';
-
-                if ( function_exists( 'has_custom_logo') && has_custom_logo()) {
-                    if ( function_exists( 'get_custom_logo') ) {
-                    $logo_markup = get_custom_logo();
-                    $logo_markup = str_replace('custom-logo-link', 'custom-logo-link navbar-brand', $logo_markup);
-                    }
-                }
-
-                ?>
-                <?php echo $logo_markup ?>
-                <header id="masthead" class="site-header" role="banner">
-                    <div class="site-branding">
+            <div class="row">
+                <!-- col 1-->
+                <div class="col-sm-3">
+                    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'pad' ); ?></button>
+                    <div id="pad-logo-container" class="navbar-header">
                         <?php
+                        $logo_markup = '<a href="' . esc_url(home_url("/")) . '" class="navbar-brand">'. __('NO LOGO', 'pad') . '</a>';
+
+                        if ( function_exists( 'has_custom_logo') && has_custom_logo()) {
+                            if ( function_exists( 'get_custom_logo') ) {
+                            $logo_markup = get_custom_logo();
+                            $logo_markup = str_replace('custom-logo-link', 'custom-logo-link navbar-brand', $logo_markup);
+                            }
+                        }
 
                         ?>
-                        <?php
-                        if ( is_front_page() && is_home() ) : ?>
+                        <?php echo $logo_markup ?>
+                        <header id="masthead" class="site-header" role="banner">
+                            <div class="site-branding">
+                                <?php
 
-                            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                        <?php else : ?>
-                            <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-                            <?php
-                        endif;
+                                ?>
+                                <?php
+                                if ( is_front_page() && is_home() ) : ?>
 
-                        $description = get_bloginfo( 'description', 'display' );
-                        if ( $description || is_customize_preview() ) : ?>
-                            <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-                            <?php
-                        endif; ?>
-                    </div><!-- .site-branding -->
+                                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                                <?php else : ?>
+                                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                                    <?php
+                                endif;
 
-                </header><!-- #masthead -->
-            </div>
-            <?php
-            wp_nav_menu( array(
-                'theme_location' => 'primary',
-                'menu_id' => 'primary-menu',
-                'container' => 'div',
-                'container_class' => 'collapse navbar-collapse',
-                'menu_class' => 'nav navbar-nav navbar-right',
+                                $description = get_bloginfo( 'description', 'display' );
+                                if ( $description || is_customize_preview() ) : ?>
+                                    <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+                                    <?php
+                                endif; ?>
+                            </div><!-- .site-branding -->
 
-                )
-            );
-            ?>
-        </div>
+                        </header><!-- #masthead -->
+                    </div>
+                </div> <!-- col 1 -->
+                <div class="col-sm-9">
+                    <?php
+                    wp_nav_menu( array(
+                        'theme_location' => 'primary',
+                        'menu_id' => 'primary-menu',
+                        'container' => 'div',
+                        'container_class' => 'collapse navbar-collapse',
+                        'menu_class' => 'nav navbar-nav navbar-right',
+
+                        )
+                    );
+                    ?>
+                </div> <!-- col 2 -->
+            </div> <!-- row -->
+        </div> <!-- container -->
     </nav><!-- #site-navigation -->
 
 

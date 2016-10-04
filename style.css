@@ -960,6 +960,9 @@ a {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+.navbar-default .navbar-nav > li > a {
+  color: #333333; }
+
 .main-navigation {
   clear: both;
   display: block;
@@ -1343,6 +1346,8 @@ object {
 
 @media (min-width: 768px) {
   .home #site-navigation.navbar-custom.affix {
-    background-color: #eeeeee; } }
+    background-color: #eeeeee; }
+    .home #site-navigation.navbar-custom.affix #primary-menu a {
+      color: #333333; } }
 
 /*# sourceMappingURL=style.css.map */

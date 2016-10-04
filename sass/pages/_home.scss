@@ -31,6 +31,12 @@
 @media(min-width:768px) {
   .home #site-navigation.navbar-custom.affix {
     background-color: $gray-lighter ;
+
+    #primary-menu a {
+      color: $nav-color;
+    }
   }
+
+
 }
 

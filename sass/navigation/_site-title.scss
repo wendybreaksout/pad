@@ -1,0 +1,17 @@
+.site-title {
+  margin-top: 0;
+
+  a {
+    color: $gray-darker;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: $gray-darker;
+  }
+
+}
+
+p.site-description {
+    color: $gray-darker;
+}

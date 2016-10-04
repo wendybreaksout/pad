@@ -16,7 +16,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
-<?php wp_head(); ?>
+<?php
+wp_head();
+$pad_theme_options = get_option( PAD_THEME_OPTIONS_NAME );
+?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -24,7 +27,7 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'pad' ); ?></a>
 
     <nav id="site-navigation" class="main-navigation navbar navbar-default navbar-custom navbar-fixed-top affix" role="navigation">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <!-- col 1-->
                 <div class="col-sm-3">
@@ -42,28 +45,7 @@
 
                         ?>
                         <?php echo $logo_markup ?>
-                        <header id="masthead" class="site-header" role="banner">
-                            <div class="site-branding">
-                                <?php
 
-                                ?>
-                                <?php
-                                if ( is_front_page() && is_home() ) : ?>
-
-                                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                                <?php else : ?>
-                                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                                    <?php
-                                endif;
-
-                                $description = get_bloginfo( 'description', 'display' );
-                                if ( $description || is_customize_preview() ) : ?>
-                                    <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-                                    <?php
-                                endif; ?>
-                            </div><!-- .site-branding -->
-
-                        </header><!-- #masthead -->
                     </div>
                 </div> <!-- col 1 -->
                 <div class="col-sm-9">
@@ -79,7 +61,39 @@
                     );
                     ?>
                 </div> <!-- col 2 -->
-            </div> <!-- row -->
+            </div> <!-- row 1 -->
+            <?php
+                $masthead_display_class = '';
+                if ( isset($pad_theme_options['display_site_title']) && $pad_theme_options['display_site_title'] == false ){
+                    $masthead_display_class = 'hidden';
+                }
+            ?>
+            <div id="masthead-row" class="row <?php echo $masthead_display_class ?>">
+                <div class="col-sm-12">
+                    <header id="masthead" class="site-header" role="banner">
+                        <div class="site-branding">
+                            <?php
+
+                            ?>
+                            <?php
+                            if ( is_front_page() && is_home() ) : ?>
+
+                                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                            <?php else : ?>
+                                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                                <?php
+                            endif;
+
+                            $description = get_bloginfo( 'description', 'display' );
+                            if ( $description || is_customize_preview() ) : ?>
+                                <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+                                <?php
+                            endif; ?>
+                        </div><!-- .site-branding -->
+
+                    </header><!-- #masthead -->
+                </div>
+            </div>
         </div> <!-- container -->
     </nav><!-- #site-navigation -->
 

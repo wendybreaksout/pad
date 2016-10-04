@@ -735,6 +735,8 @@ section#contact {
     margin-top: 0; }
 
 footer {
+  color: #ffffff;
+  background-color: #222222;
   padding: 25px 0;
   text-align: center; }
   footer span.copyright {
@@ -748,6 +750,8 @@ footer {
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     text-transform: none; }
+  footer section {
+    padding: 0; }
 
 ::-moz-selection {
   text-shadow: none;
@@ -1070,20 +1074,31 @@ a {
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s; }
+    #site-navigation.navbar-custom .site-title {
+      font-size: 2.5em;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s; }
+    #site-navigation.navbar-custom .site-description {
+      font-size: 1.5em;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s; }
     #site-navigation.navbar-custom .navbar-nav > .active > a {
-      border-radius: 3px; }
-
-  .home #site-navigation.navbar-custom {
-    background-color: transparent; } }
+      border-radius: 3px; } }
 @media (min-width: 768px) {
   #site-navigation.navbar-custom.affix {
     background-color: #eeeeee;
     padding: 10px 0; }
     #site-navigation.navbar-custom.affix .navbar-brand {
       font-size: 1.5em;
-      width: 80%; } }
+      width: 80%; }
+    #site-navigation.navbar-custom.affix .site-title {
+      font-size: 2em; }
+    #site-navigation.navbar-custom.affix .site-description {
+      font-size: 1.1em; } }
 /*--------------------------------------------------------------
-## Loog
+## Logo
 --------------------------------------------------------------*/
 #pad-logo-container {
   margin-top: 15px; }
@@ -1093,6 +1108,20 @@ a.custom-logo-link {
 
 #masthead {
   text-align: left; }
+
+/*--------------------------------------------------------------
+## Site title and description
+--------------------------------------------------------------*/
+.site-title {
+  margin-top: 0; }
+  .site-title a {
+    color: #222222;
+    text-decoration: none; }
+  .site-title a:visited {
+    color: #222222; }
+
+p.site-description {
+  color: #222222; }
 
 /*--------------------------------------------------------------
 # Accessibility
@@ -1300,5 +1329,20 @@ object {
 
 .home .entry-content {
   margin-top: 0; }
+.home .site-title a {
+  color: #fed136;
+  text-decoration: none; }
+.home .site-title a:visited {
+  color: #fed136; }
+.home p.site-description {
+  color: #ffffff; }
+.home #site-navigation.navbar-custom {
+  background-color: transparent; }
+.home #primary-menu a {
+  color: #ffffff; }
+
+@media (min-width: 768px) {
+  .home #site-navigation.navbar-custom.affix {
+    background-color: #eeeeee; } }
 
 /*# sourceMappingURL=style.css.map */

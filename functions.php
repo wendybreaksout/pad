@@ -7,6 +7,17 @@
  * @package PAD
  */
 
+if (!defined('PAD_THEME_VERSION'))
+	define('PAD_THEME_VERSION', '0.0.1');
+
+if (!defined('PAD_THEME_OPTIONS_NAME'))
+	define('PAD_THEME_OPTIONS_NAME', 'pad_theme_settings');
+
+
+if (!defined('PAD_THEME_TEXTDOMAIN'))
+    define('PAD_THEME_TEXTDOMAIN', 'pad');
+
+
 if ( ! function_exists( 'pad_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -22,7 +33,7 @@ function pad_setup() {
 	 * If you're building a theme based on PAD, use a find and replace
 	 * to change 'pad' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'pad', get_template_directory() . '/languages' );
+	load_theme_textdomain( PAD_THEME_TEXTDOMAIN, get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -86,6 +97,7 @@ add_action( 'after_setup_theme', 'pad_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function pad_widgets_init() {
+
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'pad' ),
 		'id'            => 'sidebar-1',
@@ -95,6 +107,44 @@ function pad_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+    
+    register_sidebar(array(
+        'name' => 'Footer Widget 1',
+        'id' => 'footer_first_widget_area',
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ));
+
+    register_sidebar(array(
+        'name' => 'Footer Widget 2',
+        'id' => 'footer_second_widget_area',
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ));
+
+    register_sidebar(array(
+        'name' => 'Footer Widget 3',
+        'id' => 'footer_third_widget_area',
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ));
+
+    register_sidebar(array(
+        'name' => 'Footer Widget 4',
+        'id' => 'footer_fourth_widget_area',
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ));
+
+
 }
 add_action( 'widgets_init', 'pad_widgets_init' );
 
@@ -245,3 +295,15 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/*
+ * Theme settings
+ */
+require get_template_directory() . '/inc/class_pad_theme_settings.php';
+
+$pad_theme_settings = new PAD_Theme_Settings();
+add_action('admin_menu', array( $pad_theme_settings, 'add_pad_theme_options_page'));
+add_action('admin_init', array( $pad_theme_settings, 'settings_init'));
+
+
+

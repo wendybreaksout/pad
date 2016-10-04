@@ -1,6 +1,8 @@
 // Footer
 
 footer {
+  color: $theme-white;
+  background-color: $gray-darker;
   padding: 25px 0;
   text-align: center;
   span.copyright {
@@ -13,5 +15,8 @@ footer {
     line-height: 40px;
     @include heading-font;
     text-transform: none;
+  }
+  section {
+    padding: 0;
   }
 }

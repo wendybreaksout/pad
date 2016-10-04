@@ -474,6 +474,9 @@ section#contact {
   section#contact .text-danger {
     color: #e74c3c; }
 
+#secondary section {
+  padding: 0; }
+
 #portfolio .portfolio-item {
   margin: 0 0 15px;
   right: 0; }
@@ -960,7 +963,7 @@ a {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
-.navbar-default .navbar-nav > li > a {
+#primary-menu a {
   color: #333333; }
 
 .main-navigation {
@@ -1244,6 +1247,9 @@ p.site-description {
   clear: both;
   margin: 0 0 1.5em; }
 
+#content {
+  margin-top: 250px; }
+
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
@@ -1343,6 +1349,8 @@ object {
   background-color: transparent; }
 .home #primary-menu a {
   color: #ffffff; }
+.home #content {
+  margin-top: 0; }
 
 @media (min-width: 768px) {
   .home #site-navigation.navbar-custom.affix {

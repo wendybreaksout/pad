@@ -26,6 +26,10 @@
   #primary-menu a {
     color: $theme-white;
   }
+
+  #content {
+    margin-top: 0;
+  }
 }
 
 @media(min-width:768px) {

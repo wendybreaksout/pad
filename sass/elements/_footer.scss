@@ -2,7 +2,7 @@
 
 footer {
   color: $theme-white;
-  background-color: $gray-darker;
+  background-color: $theme_secondary;
   padding: 25px 0;
   text-align: center;
   span.copyright {
@@ -19,4 +19,72 @@ footer {
   section {
     padding: 0;
   }
+  h3,h4,h5,h6{
+    text-align: left;
+    color: $theme-white;
+  }
+  h1, h2 {
+    text-align: center;
+  }
+  a {
+    color: $theme-white;
+    &:visited {
+      color: $theme-white;
+    }
+    &:hover {
+      color: $theme-accent-color-light ;
+    }
+  }
+
+  .site-info {
+    font-size: 0.8em;
+  }
+
+
+}
+
+#colophon {
+  h1,h2,h3,h4,h5,h6{
+    color: $theme-white;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  p {
+    font-size: 1em;
+    text-align: left;
+  }
+
+  a {
+    color: $theme-white;
+    &:visited {
+      color: $theme-white;
+    }
+    &:hover {
+      color: $theme-accent-color-light ;
+    }
+  }
+}
+
+.entry-footer {
+  color: $theme-text-color;
+  background-color: $theme-white;
+  a {
+    color: $theme-text-color;
+    &:visited {
+      color: $theme-text-color;
+    }
+  }
+
+
+}
+
+.pad-archive {
+  .entry-footer {
+    text-align: right;
+  }
+}
+
+.comments-link {
+  margin-left: 1em;
 }

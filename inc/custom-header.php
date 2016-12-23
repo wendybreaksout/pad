@@ -32,8 +32,8 @@ function pad_custom_header_setup() {
 
 	// Custom logo
 	add_theme_support( 'custom-logo', array(
-		'height'      => 100,
-		'width'       => 400,
+		'height'      => 250,
+		'width'       => 250,
 		'flex-width' => true,
 	) );
 }

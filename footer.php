@@ -14,7 +14,7 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row">
 				<div class="col-md-3">
 					<?php dynamic_sidebar('footer_first_widget_area'); ?>
@@ -33,9 +33,7 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="site-info">
-						<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'pad' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'pad' ), 'WordPress' ); ?></a>
-						<span class="sep"> | </span>
-						<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'pad' ), 'pad', '<a href="http://wkempferjr@tnotw.com" rel="designer">Wes Kempfer</a>' ); ?>
+						<?php printf( esc_html__( 'Copyright &copy;  %1$s %2$s', 'pad' ), date('Y'), '<a href="' . get_site_url() . '" rel="designer">Portland Alternative Dwellings</a>' ); ?>
 					</div><!-- .site-info -->
 				</div>
 			</div>

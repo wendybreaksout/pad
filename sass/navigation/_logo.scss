@@ -1,5 +1,6 @@
 #pad-logo-container {
   margin-top: 15px;
+  padding-top: 5px;
 }
 
 a.custom-logo-link {
@@ -8,4 +9,32 @@ a.custom-logo-link {
 
 #masthead {
   text-align: left;
+}
+
+#pad-logo-container-mobile {
+  display: none;
+}
+
+
+
+@media(max-width:$bp-tablet-desktop - 1px ) {
+  #pad-logo-container {
+    display: none;
+  }
+
+  #pad-logo-container-mobile {
+    display: block;
+    position: fixed;
+    top: -10px;
+    left: 20px;
+    z-index: 10000;
+
+    a.mobile-logo img {
+      max-width: 80px;
+    }
+  }
+
+
+
+
 }

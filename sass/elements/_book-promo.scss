@@ -1,0 +1,19 @@
+.book-promo-header .panel-grid-cell:first-child {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+}
+
+.book-promo-header .panel-grid-cell:last-child {
+  padding-top: 30px;
+}
+
+.book-promo-header {
+  background-color: #cbe381;
+
+  .textwidget {
+    padding: 0 30px;
+  }
+}
+
+

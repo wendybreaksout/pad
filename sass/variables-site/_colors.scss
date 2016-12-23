@@ -1,3 +1,57 @@
+/* from 'agency template */
+// Variables
+
+// Gray and Brand Colors for use across theme
+
+
+$gray-base:			#000 !default;
+$gray-darker:		lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:			lighten($gray-base, 20%) !default;   // #333
+$gray:				lighten($gray-base, 33.5%) !default; // #555
+$gray-light:		lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:		lighten($gray-base, 93.5%) !default; // #eee
+
+
+
+$theme-primary:    #197002;
+$theme-primary-light: lighten($theme-primary, 5%);
+$theme-primary-lighter: lighten($theme-primary, 8%);
+
+$theme-danger:     #e74c3c;
+$theme-white:      #ffffff;
+$theme_color_filter: rgba(25,112,2,0.5);
+$theme_secondary: #050200;
+
+// TODO: standardize on hyphen for sass variable names.
+$theme_accent_color: #d0991b;
+$theme-accent-color: $theme_accent_color;
+$theme-accent-color-light: lighten( $theme-accent-color, 20% );
+
+$theme_light_gray: #f7f7f7;
+$theme_header_font_color: $gray-darker;
+$theme-preloader-background-color: #ededee;
+
+
+$theme_background_color: $theme_white;
+$theme_button_text_color: $theme_white;
+
+
+$nav-color: $theme-primary;
+$nav-hover-color: $theme-primary-lighter;
+$nav-background-color: $gray-lighter;
+$nav-hover-background-color: lighten($gray-base, 90%) ;
+$nav-color-inverted: $theme_white;
+$nav-hover-color-inverted: lighten( $theme_primary, 30%);
+$nav-background-color-inverted: rgba(0,0,0,0.2);
+
+$nav-toggle-button-color: $nav-background-color;
+$nav-toggle-button-hover-color:  $nav-background-color;
+$nav-toggle-button-text-color: $theme-primary;
+$nav-toggle-button-text-hover-color: $theme-primary-lighter;
+
+
+
+
 $color__background-body: #fff;
 $color__background-screen: #f1f1f1;
 $color__background-hr: #ccc;
@@ -8,10 +62,11 @@ $color__background-ins: #fff9c0;
 $color__text-screen: #21759b;
 $color__text-input: #666;
 $color__text-input-focus: #111;
-$color__link: royalblue;
-$color__link-visited: purple;
-$color__link-hover: midnightblue;
+$color__link: $theme-primary;
+$color__link-visited: $theme-primary;
+$color__link-hover: $theme-primary-lighter;
 $color__text-main: #404040;
+$theme-text-color: $color__text-main;
 
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;
@@ -19,21 +74,7 @@ $color__border-button-focus: #aaa #bbb #bbb;
 $color__border-input: #ccc;
 $color__border-abbr: #666;
 
-/* from 'agency template */
-// Variables
 
-// Gray and Brand Colors for use across theme
+// colors from Divi-child
 
-$theme-primary:    #fed136;
-$theme-danger:     #e74c3c;
-$theme-white:      #ffffff;
-
-$gray-base:			#000 !default;
-$gray-darker:		lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:			lighten($gray-base, 20%) !default;   // #333
-$gray:				lighten($gray-base, 33.5%) !default; // #555
-$gray-light:		lighten($gray-base, 46.7%) !default; // #777
-$gray-lighter:		lighten($gray-base, 93.5%) !default; // #eee
-
-
-$nav-color: $gray-dark;
+//$theme_color: #256117;

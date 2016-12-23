@@ -105,6 +105,45 @@
 
 @mixin heading-font {
 	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	text-transform: uppercase;
+	text-transform: none;
+}
+
+@mixin logo-transition {
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+
+@mixin box-shadow {
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+	-moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+@mixin list-bullets ( $icon ) {
+    list-style-type: none;
+	&:before {
+		font-family: FontAwesome;
+		content: $icon;
+		float: left;
+		padding-right: 0.5em;
+		font-size: 0.5em;
+		padding-top: 0.9em;
+	}
+}
+
+@mixin admin-sticky-fix( $offset: 0 ) {
+	$narrow-offset: 46px;
+	$wide-offset: 32px;
+	@if $offset != 0 and type-of($offset) == 'number' {
+		$narrow-offset: $narrow-offset + $offset;
+		$wide-offset: $wide-offset + $offset;
+	}
+	.admin-bar & {
+		top: $narrow-offset;
+		@media screen and (min-width: 783px) {
+			top: $wide-offset;
+		}
+	}
 }
 

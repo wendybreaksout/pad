@@ -1,0 +1,18 @@
+.cart-contents:before {
+  font-family:FontAwesome;
+  content: "\f07a";
+}
+.cart-contents:hover {
+  text-decoration: none;
+}
+
+.cart-contents-count {
+  color: #fff;
+  background-color: #2ecc71;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 1px 6px;
+  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  vertical-align: top;
+}

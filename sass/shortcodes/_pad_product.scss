@@ -1,0 +1,138 @@
+.pad-product {
+
+  box-sizing: border-box;
+  padding: 0 !important;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  .card-block {
+    padding: 0 2em 2em;
+    min-height: 9em;
+    .card-title {
+      min-height: 2em;
+      margin-bottom: 5px;
+      margin-top: 29px;
+    }
+  }
+
+  .pad-thumbnail {
+    width: 100%;
+  }
+
+  .pad-image-column {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .pad-product-card-column {
+    padding: 0;
+  }
+
+  .pad-product-grid-desc {
+    padding: 30px 5px 5px 0;
+  }
+
+  .pad-product-excerpt {
+    font-size: $product_excerpt_font_size;
+  }
+
+  .pad-onsale {
+    position: absolute;
+    top: 35px;
+    left: 37px;
+    z-index: 2;
+    background-color: $theme_primary;
+    color: $theme_button_text_color;
+    font-size: 1.5em;
+    padding: 6px 19px;
+  }
+
+  .pad-animate {
+    z-index: 3;
+    color: $theme_accent_color;
+    font-size: 3em;
+    text-align: center;
+    padding: 40%;
+
+  }
+
+  .pad-product-button {
+    text-align: center;
+    margin-top: 1.5em;
+
+    a.btn {
+      font-size: 1.3em;
+    }
+
+
+  }
+
+  .pad-product-panel {
+    margin: 0;
+  }
+
+
+  .woocommerce-Price-amount.amount {
+    background-color: $theme-primary;
+    &:hover {
+      background-color: $theme-primary-light;
+    }
+  }
+
+  .pad-product-hover-slide {
+    position: relative;
+    height: $product_card_image_height;
+    overflow: hidden;
+
+
+    img {
+      position:absolute;
+      left:0;
+      width: 100%;
+      -webkit-transition: opacity 1s ease-in-out;
+      -moz-transition: opacity 1s ease-in-out;
+      -o-transition: opacity 1s ease-in-out;
+      transition: opacity 1s ease-in-out;
+    }
+
+    img.product-image-top:hover {
+      opacity:0;
+    }
+  }
+
+  .pad-product-horizontal-hover-slide {
+
+    position: relative;
+    height: $product_horizontal_image_height;
+    overflow: hidden;
+
+
+    img {
+      position:absolute;
+      left:0;
+      width: 100%;
+      -webkit-transition: opacity 1s ease-in-out;
+      -moz-transition: opacity 1s ease-in-out;
+      -o-transition: opacity 1s ease-in-out;
+      transition: opacity 1s ease-in-out;
+    }
+
+    img.product-image-top:hover {
+      opacity:0;
+    }
+  }
+
+
+}
+
+
+
+
+@media( max-width: $page-builder-product-tablet-desktop  ) {
+  .pad-product {
+    .pad-product-hover-slide,
+    .pad-product-horizontal-hover-slide {
+      height: $product_card_1col_image_height;
+    }
+  }
+}

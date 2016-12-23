@@ -1,0 +1,55 @@
+$font-size: $product_excerpt_font_size;
+$line-height: 1.4;
+$lines-to-show: 3;
+
+.truncate-ellipsis-base {
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-width: 100%;
+  height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+  margin: 0 auto;
+  font-size: $font-size;
+  line-height: $line-height;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.truncate-ellipsis {
+  @extend .truncate-ellipsis-base;
+  -webkit-line-clamp: $lines-to-show;
+}
+
+.truncate-ellipsis-4 {
+  @extend .truncate-ellipsis-base;
+  height: $font-size*$line-height* 4 ; /* Fallback for non-webkit */
+  -webkit-line-clamp: 4 ;
+}
+
+
+.truncate-ellipsis-5 {
+  @extend .truncate-ellipsis-base;
+  height: $font-size*$line-height* 5 ; /* Fallback for non-webkit */
+  -webkit-line-clamp: 5 ;
+}
+
+.truncate-ellipsis-6 {
+  @extend .truncate-ellipsis-base;
+  height: $font-size*$line-height* 6 ; /* Fallback for non-webkit */
+  -webkit-line-clamp: 6 ;
+}
+
+
+.truncate-ellipsis-10 {
+  @extend .truncate-ellipsis-base;
+  height: $font-size*$line-height* 10 ; /* Fallback for non-webkit */
+  -webkit-line-clamp: 10 ;
+}
+
+.truncate-ellipsis-20 {
+  @extend .truncate-ellipsis-base;
+  height: $font-size*$line-height* 20 ; /* Fallback for non-webkit */
+  -webkit-line-clamp: 20 ;
+}
+
+

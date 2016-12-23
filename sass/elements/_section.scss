@@ -15,7 +15,7 @@ section {
   }
 }
 
-@media(min-width:768px) {
+@media(min-width: $bp-tablet-desktop ) {
   section {
     padding: 150px 0;
   }
@@ -81,4 +81,18 @@ section#contact {
 
 #secondary section {
   padding: 0;
+}
+
+/*
+ * These classes can be added to the first and last rows of a group
+ * of PageBuilder rows in order to create breaks between them.
+ *
+ */
+
+.pad-section-start {
+  margin-top: 30px;
+}
+
+.pad-section-end {
+  margin-bottom: 30px;
 }

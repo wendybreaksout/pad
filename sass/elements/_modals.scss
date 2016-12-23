@@ -1,0 +1,16 @@
+.modal-title {
+  color: $theme-primary !important;
+  font-size: 1.2em;
+}
+.modal-body {
+  color: $color__text-main !important;
+  p, ul, li {
+    color: $color__text-main !important;
+  }
+  a {
+    color: $color__text-main !important;
+    &:visited {
+      color: $color__text-main !important;
+    }
+  }
+}

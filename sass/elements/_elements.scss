@@ -74,10 +74,15 @@ aside.clients {
 @import "tables";
 @import "header";
 @import "section";
+@import "headings";
 @import "portfolio";
 @import "timeline";
 @import "team-member";
 @import "footer";
+@import "preloader";
+@import "modals";
+@import "shopping-cart";
+@import "book-promo";
 
 
 // Highlight Color Customization
@@ -102,4 +107,27 @@ img::-moz-selection {
 
 body {
   -webkit-tap-highlight-color: $theme-primary;
+}
+
+.pad-archive {
+	margin-bottom: 65px;
+	.entry-content {
+		padding-bottom: 30px;
+		max-height: 400px;
+
+		.pad-featured-article-image {
+			max-height: 275px;
+            @media ( max-width: $bp-mobile-tablet - 1)  {
+              max-height: 700px;
+            }
+		}
+	}
+
+}
+
+@media ( max-width: $bp-mobile-tablet - 1) {
+	.pad-archive-excerpt-container {
+		margin-top: 2em;
+	}
+
 }

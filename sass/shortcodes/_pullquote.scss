@@ -1,0 +1,49 @@
+.pullquote2-container {
+  border-left: $theme-accent-color 3px solid;
+  padding: 0.5em 0 0.5em 1em;
+  margin-bottom: 2em;
+  margin-top: 2em;
+
+  .pullquote2-content {
+    display: inline;
+    font-size: 1.1em;
+    line-height: 1.5;
+
+    &:before {
+      font-family: FontAwesome;
+      content: "\f10d";
+      display: inline;
+      font-size: 0.7em;
+      color: $gray-light;
+      margin-right: 0.5em;
+      vertical-align: super;
+    }
+
+
+  }
+
+  .pullquote2-citation {
+    display: inline;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: $gray-light;
+
+    &:before {
+      content: "-";
+      display: inline;
+      padding: 0 0.5em;
+    }
+
+    &:after {
+      font-family: FontAwesome;
+      content: "\f10e";
+      display: inline;
+      font-size: 0.7em;
+      color: $gray-light;
+      margin-left: 0.5em;
+      vertical-align: super;
+
+    }
+  }
+
+}

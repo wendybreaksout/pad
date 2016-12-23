@@ -1,0 +1,48 @@
+.pad-featured-article {
+
+  .pad-featured-article-excerpt {
+    height: 485px;
+    z-index: 2;
+    margin-top: 0;
+    margin-left: -75px;
+    background-color: #ffffff;
+    @include box-shadow();
+    padding: 10px 30px;
+  }
+
+  .pad-article-excerpt {
+    font-size: 1.3em;
+    line-height: 1.7;
+  }
+
+
+  .pad-featured-article-image {
+    height: 300px;
+  }
+
+
+  .pad-article-button {
+    position: absolute;
+    right: 58px;
+    bottom: 30px;
+    a {
+      font-size: 1em;
+    }
+
+  }
+
+  .pad-animate {
+    z-index: 3;
+    color: $theme_accent_color;
+    font-size: 3em;
+    text-align: center;
+    padding: 40%;
+  }
+
+  .card-block {
+    padding: 0 15px 90px;
+    font-size: 1.2em;
+    min-height: 300px;
+  }
+
+}

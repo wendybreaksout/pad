@@ -1,0 +1,12 @@
+.preloader-target {
+  div#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10001;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    background: $theme-preloader-background-color url('/wp-content/themes/pad/images/balls.gif') no-repeat center center;
+  }
+}

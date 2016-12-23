@@ -1,5 +1,9 @@
 #primary-menu a {
   color: $nav-color;
+  &:hover {
+    background-color: $nav-hover-background-color;
+    color: $nav-hover-color;
+  }
 }
 
 .main-navigation {
@@ -7,6 +11,7 @@
 	display: block;
 	float: left;
 	width: 100%;
+    font-size: $primary_navigation_font_size;
 
 	ul {
 		display: none;
@@ -18,9 +23,11 @@
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 			float: left;
 			position: absolute;
-			top: 1.5em;
+			top: 3em;
 			left: -999em;
 			z-index: 99999;
+            line-height: 2.7;
+            padding: 10px 0 0;
 
 			ul {
 				left: -999em;
@@ -36,6 +43,7 @@
 
 			a {
 				width: 200px;
+                padding: 0 20px;
 			}
 
 			:hover > a,
@@ -49,7 +57,8 @@
 
 		li:hover > ul,
 		li.focus > ul {
-			left: auto;
+			left: 8em;
+            top: 1em;
 		}
 	}
 
@@ -114,109 +123,317 @@
 // Custom Navigation Bar
 
 .navbar-custom {
-	background-color: $gray-darker;
-	border-color: transparent;
-	.navbar-brand {
-		color: $theme-primary;
-		@include script-font;
-		&:hover,
-		&:focus,
-		&:active,
-		&.active {
-			color: darken($theme-primary, 10%);
-		}
-	}
-	.navbar-collapse {
-		border-color: fade-out(white, .02);
-	}
-	.navbar-toggle {
-		background-color: $theme-primary;
-		border-color: $theme-primary;
-		@include heading-font;
-		color: white;
-		font-size: 12px;
-		&:hover,
-		&:focus {
-			background-color: $theme-primary;
-		}
-	}
-	.nav {
-		li {
-			a {
-				@include heading-font;
-				font-weight: 400;
-				letter-spacing: 1px;
-				color: white;
-				&:hover,
-				&:focus {
-					color: $theme-primary;
-					outline: none;
-				}
-			}
-		}
-	}
-	.navbar-nav>.active>a {
-		border-radius: 0;
-		color: white;
-		background-color: $theme-primary;
-	}
-	.navbar-nav>.active>a:hover,
-	.navbar-nav>.active>a:focus {
-		color: white;
-		background-color: darken($theme-primary, 10%);
-	}
+  background-color: $gray-darker;
+  border-color: transparent;
+  .navbar-brand {
+    color: $theme-primary;
+    @include script-font;
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      color: darken($theme-primary, 10%);
+    }
+  }
+  .navbar-collapse {
+    border-color: fade-out(white, .02);
+  }
+  .navbar-toggle {
+    background-color: $nav-toggle-button-color;
+    color: $nav-toggle-button-text-color;
+    border: none;
+    box-shadow: none;
+    @include heading-font;
+    text-shadow: none;
+    font-size: 1.7em;
+
+    &:hover {
+      background-color: $nav-toggle-button-hover-color !important;
+      color: $nav-toggle-button-text-hover-color !important;
+    }
+    &:focus {
+      background-color: $nav-toggle-button-hover-color !important;
+      color: $nav-toggle-button-text-hover-color !important;
+
+      &:after {
+        font-family: FontAwesome;
+        content: "\f00d";
+
+      }
+    }
+    &:after {
+      font-family: FontAwesome;
+      content: "\f0c9";
+      &:hover {
+        color: $nav-toggle-button-text-hover-color !important;
+      }
+    }
+  }
+  .navbar-toggle.collapsed {
+    &:focus {
+      background-color: $nav-toggle-button-color !important;
+      color: $nav-toggle-button-text-color !important;
+
+    }
+    &:hover {
+      background-color: $nav-toggle-button-hover-color !important;
+      color: $nav-toggle-button-text-hover-color !important;
+    }
+    &:after {
+      font-family: FontAwesome;
+      content: "\f0c9";
+    }
+
+  }
+
+  .nav {
+    li {
+      a {
+        @include heading-font;
+        font-weight: 400;
+        letter-spacing: 1px;
+        color: white;
+        &:hover,
+        &:focus {
+          color: $theme-primary;
+          outline: none;
+        }
+      }
+    }
+  }
+  .navbar-nav > .active > a {
+    border-radius: 0;
+    color: white;
+    background-color: $theme-primary;
+  }
+  .navbar-nav > .active > a:hover,
+  .navbar-nav > .active > a:focus {
+    color: white;
+    background-color: darken($theme-primary, 10%);
+  }
 }
 
-@media(min-width:768px) {
+
+@media(min-width:$bp-tablet-desktop) {
 	#site-navigation.navbar-custom {
-		background-color: $gray-lighter;
+		background-color: $nav-background-color;
         background-image: none;
-		padding: 25px 0;
-		-webkit-transition: padding 0.3s;
-		-moz-transition: padding 0.3s;
-		transition: padding 0.3s;
+		padding: 25px 0 0;
+        height: $nav_height-before-scroll;
+        @include logo-transition();
 		border: none;
 		.navbar-brand {
 			font-size: 2em;
             width: 100%;
-			-webkit-transition: all 0.3s;
-			-moz-transition: all 0.3s;
-			transition: all 0.3s;
+			img {
+				margin-top: -50px;
+                max-width: 80%;
+			}
+
+			@include logo-transition();
 		}
+
+        #primary-menu .sub-menu {
+          background-color: $nav-background-color;
+          a {
+            background-color: $nav-background-color;
+            &:hover {
+              background-color: $nav-hover-background-color;
+            }
+          }
+        }
+
         .site-title {
           font-size: 2.5em;
-          -webkit-transition: all 0.3s;
-          -moz-transition: all 0.3s;
-          transition: all 0.3s;
+          @include logo-transition();
         }
         .site-description {
           font-size: 1.5em;
-          -webkit-transition: all 0.3s;
-          -moz-transition: all 0.3s;
-          transition: all 0.3s;
+          @include logo-transition();
         }
 		.navbar-nav>.active>a {
 			border-radius: 3px;
 		}
+        .inverted-logo {
+          display: none;
+          @include logo-transition();
+        }
+        .normal-logo {
+          display: block;
+          @include logo-transition();
+        }
+
 	}
+
+    .main-navigation {
+      ul {
+        li:hover > ul,
+        li.focus > ul {
+          left: 1em;
+          top: 1.9em;
+        }
+      }
+    }
 
 }
 
 // Navbar Change on Scroll
-
-@media(min-width:768px) {
+@media(min-width:$bp-tablet-desktop) {
 	#site-navigation.navbar-custom.affix {
-		background-color: $gray-lighter ;
-		padding: 10px 0;
+		background-color: $nav-background-color ;
+		padding: 10px 0 0;
+        height: $nav-height-after-scroll;
 		.navbar-brand {
 			font-size: 1.5em;
             width: 80%;
+			img {
+				margin-top: -35px;
+			}
+
 		}
+
+        #primary-menu .sub-menu {
+          background-color: $nav-background-color;
+          a {
+            background-color: $nav-background-color;
+            &:hover {
+              background-color: $nav-hover-background-color;
+            }
+          }
+        }
         .site-title {
             font-size: 2em;
         }
         .site-description {
           font-size: 1.1em;
         }
+        .inverted-logo {
+          display: none;
+        }
+        .normal-logo {
+          display: block;
+        }
 	}
 }
+
+@media( max-width: $bp-tablet-desktop - 1px  ) {
+
+  .main-navigation li {
+    float: none;
+  }
+
+  #primary-menu a {
+    color: $nav-color;
+    &:hover {
+      color: $nav-hover-color;
+    }
+  }
+
+  #primary-menu .sub-menu {
+    background-color: $nav-background-color;
+    a {
+      background-color: $nav-background-color;
+    }
+  }
+
+
+  #primary-menu-container {
+    overflow: visible;
+    width: 60%
+  }
+
+  #site-navigation {
+    background-color: $nav-background-color;
+    .container-fluid {
+      background-color: $nav-background-color;
+    }
+  }
+}
+
+@media(min-width:$bp-adjust-logo-1 ) {
+  #site-navigation.navbar-custom.affix {
+    .navbar-brand {
+      img {
+        margin-top: -40px;
+      }
+
+    }
+  }
+}
+
+/*
+ * Accomodate WP dashboard tool bar.
+ */
+#site-navigation {
+  // position: fixed;
+  top: 0;
+
+  @include admin-sticky-fix;
+}
+
+
+/*
+ * Adjust menu padding to avoid wrapping.
+ */
+@media ( max-width: $bp-squeeze-menu) {
+
+  .navbar-nav > li >a {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .main-navigation ul {
+    float: none !important;
+  }
+
+  #primary-menu-container {
+    padding-left: 70px;
+  }
+
+  .home, .hero-layout{
+    #primary-menu-container {
+      padding-left: 55px;
+    }
+  }
+
+}
+
+@media ( max-width: $bp-squeeze-menu-2 ) {
+
+  #primary-menu-container {
+    padding-left: 45px;
+  }
+
+  .home, .hero-layout{
+    #primary-menu-container {
+      padding-left: 30px;
+    }
+  }
+
+}
+
+@media ( max-width: $bp-squeeze-menu-3 ) {
+
+  #primary-menu-container {
+    padding-left: 25px;
+  }
+
+  .home, .hero-layout{
+    #primary-menu-container {
+      padding-left: 0;
+    }
+  }
+
+}
+
+/*
+ * Display utility icons horizontally at all times.
+ */
+
+.utility-set a {
+  float: left;
+}
+
+
+
+

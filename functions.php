@@ -88,6 +88,9 @@ function pad_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+    // Load demo objects
+    create_default_objects();
 }
 endif;
 add_action( 'after_setup_theme', 'pad_setup' );
@@ -346,6 +349,12 @@ $pad_shortcodes = new PAD_Shortcodes();
 $pad_shortcodes->register();
 
 /*
+ * Demo data
+ */
+require get_template_directory() . '/inc/class-pad-demo.php';
+
+
+/*
  * PageBuilder Layout
  */
 require get_template_directory() . '/inc/class_pad_pagebuilder_layouts.php';
@@ -415,147 +424,185 @@ function woocommerce_support() {
 }
 
 
+function pad_account_menu_html()
+{
+    $output = '';
+    if ( class_exists( 'WooCommerce' ) ) {
+        if (is_user_logged_in()) {
+            $title = __('Log out');
+            $href = '/my-account/customer-logout/';
+        } else {
+            $title = __('Customer Login', PAD_THEME_TEXTDOMAIN);
+            $href = '/my-account/';
+        }
+        $output = '<a title="' . $title . '" href="' . $href . '"><i class="fa fa-user"></i></a>';
+    }
+    return $output;
+
+}
+
 function pad_shopping_cart_html() {
 
     $output = '';
-    if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-       $count = WC()->cart->cart_contents_count;
-       $output .= '
-            <a class="cart-contents" href="' . WC()->cart->get_cart_url() . '" title="' .  __( 'View your shopping cart', PAD_THEME_TEXTDOMAIN ) . '">';
-        if ( $count > 0 ) {
-            $output .= '<span class="cart-contents-count">' . esc_html( $count ) . '</span>';
+    if (class_exists('WooCommerce')) {
+        if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+            $count = WC()->cart->cart_contents_count;
+            $output .= '
+            <a class="cart-contents" href="' . WC()->cart->get_cart_url() . '" title="' . __('View your shopping cart', PAD_THEME_TEXTDOMAIN) . '">';
+            if ($count > 0) {
+                $output .= '<span class="cart-contents-count">' . esc_html($count) . '</span>';
+            }
+            $output .= '</a>';
         }
-        $output .= '</a>';
+        return $output;
     }
-    return $output;
+
 }
-
-function pad_account_menu_html() {
-
-    if ( is_user_logged_in() ) {
-        $title = __('Log out');
-        $href = '/my-account/customer-logout/';
-    }
-    else {
-        $title =  __('Customer Login', PAD_THEME_TEXTDOMAIN);
-        $href = '/my-account/';
-    }
-    $output = '<a title="' . $title . '" href="' . $href . '"><i class="fa fa-user"></i></a>';
-    return $output;
-}
-
-
-/**
- * Ensure cart contents update when products are added to the cart via AJAX
- */
-function pad_header_add_to_cart_fragment( $fragments ) {
-    $fragments['a.cart-contents'] = pad_shopping_cart_html();
-    return $fragments;
-}
-add_filter( 'woocommerce_add_to_cart_fragments', 'pad_header_add_to_cart_fragment' );
-
 /*
  * Add taxonomy to media
  */
 // add categories for attachments
 function add_categories_for_attachments() {
-    register_taxonomy_for_object_type( 'category', 'attachment' );
+	register_taxonomy_for_object_type( 'category', 'attachment' );
 }
 add_action( 'init' , 'add_categories_for_attachments' );
 
 // add tags for attachments
 function add_tags_for_attachments() {
-    register_taxonomy_for_object_type( 'post_tag', 'attachment' );
+	register_taxonomy_for_object_type( 'post_tag', 'attachment' );
 }
 add_action( 'init' , 'add_tags_for_attachments' );
 
 
-/*
- * WooCommerce support
-*/
-function woo_product_terms_tab( $tabs ) {
-
-    if ( is_product() ) {
-
-        global $post;
-
-        $terms = get_the_terms( $post->ID, 'product_cat');
-
-        foreach ( $terms as $term ) {
-            if ( $term->slug == 'house-plans') {
-                $tabs['terms_tab'] = array(
-                    'title' 	=> __( 'Requirements & Terms', 'woocommerce' ),
-                    'priority' 	=> 10,
-                    'callback' 	=> 'woo_product_terms_content'
-                );
-            }
-        }
-
-    }
+if ( class_exists( 'WooCommerce' ) ) {
 
 
-	return $tabs;
+	/**
+	 * Ensure cart contents update when products are added to the cart via AJAX
+	 */
+	function pad_header_add_to_cart_fragment($fragments)
+	{
+		$fragments['a.cart-contents'] = pad_shopping_cart_html();
+		return $fragments;
+	}
 
-}
-
-function woo_product_terms_content() {
-
-    $args = array(
-        'post_type'      => 'page',
-        'post_status'    => 'publish',
-        'post_count'     => 1,
-        'posts_per_page' => 1,
-        'name'             => 'plan-requirements'
-    );
-
-    $page_query = new WP_Query( $args );
-
-    if ( $page_query->have_posts() ) {
-
-        while ($page_query->have_posts()) : $page_query->the_post();
-            the_content();
-        endwhile;
-    }
-
-    wp_reset_postdata();
+	add_filter('woocommerce_add_to_cart_fragments', 'pad_header_add_to_cart_fragment');
 
 
-}
+	/*
+     * WooCommerce support
+    */
+	function woo_product_terms_tab($tabs)
+	{
 
-add_filter( 'woocommerce_product_tabs', 'woo_product_terms_tab' );
+		if (is_product()) {
 
-/*
- * Change upsell test.
- */
+			global $post;
 
-add_filter('gettext', 'translate_upsell');
-add_filter('ngettext', 'translate_upsell');
+			$terms = get_the_terms($post->ID, 'product_cat');
 
-function translate_upsell($translated) {
-	$translated = str_ireplace('You may also like&hellip;', 'Recommended products', $translated);
-	return $translated;
-}
+			foreach ($terms as $term) {
+				if ($term->slug == 'house-plans') {
+					$tabs['terms_tab'] = array(
+						'title' => __('Requirements & Terms', 'woocommerce'),
+						'priority' => 10,
+						'callback' => 'woo_product_terms_content'
+					);
+				}
+			}
+
+		}
 
 
-/*
- *
- * Change empty shopping cart return to URL.
- */
+		return $tabs;
 
-function pad_empty_cart_redirect_url() {
-    return $_SERVER['HTTP_REFERER'];
-	// return '/books-plans/';
-}
+	}
 
-add_filter( 'woocommerce_return_to_shop_redirect', 'pad_empty_cart_redirect_url' );
+	function woo_product_terms_content()
+	{
+
+		$args = array(
+			'post_type' => 'page',
+			'post_status' => 'publish',
+			'post_count' => 1,
+			'posts_per_page' => 1,
+			'name' => 'plan-requirements'
+		);
+
+		$page_query = new WP_Query($args);
+
+		if ($page_query->have_posts()) {
+
+			while ($page_query->have_posts()) : $page_query->the_post();
+				the_content();
+			endwhile;
+		}
+
+		wp_reset_postdata();
+
+
+	}
+
+	add_filter('woocommerce_product_tabs', 'woo_product_terms_tab');
+
+	/*
+     * Change upsell test.
+     */
+
+	add_filter('gettext', 'translate_upsell');
+	add_filter('ngettext', 'translate_upsell');
+
+	function translate_upsell($translated)
+	{
+		$translated = str_ireplace('You may also like&hellip;', 'Recommended products', $translated);
+		return $translated;
+	}
+
+
+	/*
+     *
+     * Change empty shopping cart return to URL.
+     */
+
+	function pad_empty_cart_redirect_url()
+	{
+		return $_SERVER['HTTP_REFERER'];
+		// return '/books-plans/';
+	}
+
+	add_filter('woocommerce_return_to_shop_redirect', 'pad_empty_cart_redirect_url');
 
 // Remove Sidebar on all the Single Product Pages
-add_action( 'wp', 'pad_remove_sidebar_product_pages' );
+	add_action('wp', 'pad_remove_sidebar_product_pages');
 
-function pad_remove_sidebar_product_pages() {
-	if (is_product()) {
-		remove_action('woocommerce_sidebar','woocommerce_get_sidebar',10);
+	function pad_remove_sidebar_product_pages()
+	{
+		if (is_product()) {
+			remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+		}
 	}
+} // end if woocommerce class exists
+
+
+function create_default_objects() {
+
+    if ( current_user_can('install_themes')) {
+
+        $options = get_option(PAD_THEME_OPTIONS_NAME);
+
+        if ( !isset( $options['demo_data_loaded'] )  ||  $options['demo_data_loaded']  == false  ) {
+            $demo_loader = new Pad_Demo();
+            $demo_loader->load_demo_data();
+            $options['demo_data_loaded'] = true;
+
+            // Default settings for options go here.
+        }
+
+
+        update_option( PAD_THEME_OPTIONS_NAME, $options );
+
+    }
+
 }
 
 

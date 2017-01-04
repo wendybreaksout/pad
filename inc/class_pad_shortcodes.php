@@ -317,6 +317,8 @@ class PAD_Shortcodes
 
         $product_query = new WP_Query( $args );
 
+        $output = '';
+
         if ( $product_query->have_posts() ) {
 
             $output = '<div class="container-fluid pad-product-grid">' ;

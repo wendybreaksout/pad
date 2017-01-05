@@ -53,6 +53,12 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
  * This is the width at which the menu padding is reduced
  * to avoid wrapping.
  */
+/*
+$bp-squeeze-menu: 1135px;
+$bp-squeeze-menu-2: 1065px;
+$bp-squeeze-menu-3: 1035px;
+Set to 0 to disable. 
+*/
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
@@ -1395,7 +1401,7 @@ a {
 /*
  * Adjust menu padding to avoid wrapping.
  */
-@media (max-width: 1135px) {
+@media (max-width: 0) {
   .navbar-nav > li > a {
     padding-left: 8px;
     padding-right: 8px; }
@@ -1408,13 +1414,13 @@ a {
 
   .home #primary-menu-container, .hero-layout #primary-menu-container {
     padding-left: 55px; } }
-@media (max-width: 1065px) {
+@media (max-width: 0) {
   #primary-menu-container {
     padding-left: 45px; }
 
   .home #primary-menu-container, .hero-layout #primary-menu-container {
     padding-left: 30px; } }
-@media (max-width: 1035px) {
+@media (max-width: 0) {
   #primary-menu-container {
     padding-left: 25px; }
 

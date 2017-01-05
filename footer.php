@@ -33,7 +33,7 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="site-info">
-						<?php printf( esc_html__( 'Copyright &copy;  %1$s %2$s', 'pad' ), date('Y'), '<a href="' . get_site_url() . '" rel="designer">Portland Alternative Dwellings</a>' ); ?>
+						<?php printf( esc_html__( 'Copyright &copy;  %1$s %2$s', 'pad' ), date('Y'), '<a href="' . get_site_url() . '" rel="designer">' . bloginfo('name') . '</a>' ); ?>
 					</div><!-- .site-info -->
 				</div>
 			</div>

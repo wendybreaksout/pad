@@ -107,8 +107,14 @@ class PAD_Theme_Settings
     public function display_site_title_render(  ) {
 
         $options = get_option( $this->options_name );
+        if ( isset($options['display_site_title'] )) {
+            $display_site_title = $options['display_site_title'] ;
+        }
+        else {
+            $display_site_title = $this->default_display_site_title;
+        }
         ?>
-        <input id="pad_theme_display_site_title_input" type="checkbox" name="pad_theme_settings[display_site_title]" <?php checked( $options['display_site_title'], 1 ); ?> value='1'>
+        <input id="pad_theme_display_site_title_input" type="checkbox" name="pad_theme_settings[display_site_title]" <?php checked( $display_site_title, 1 ); ?> value='1'>
         <br><label for="pad_theme_display_site_title_input"><?php _e('Display site title in header', PAD_THEME_TEXTDOMAIN) ?></label>
         <?php
 

@@ -33,6 +33,9 @@ if (!defined('PAD_LOGO_DEFAULT_WIDTH'))
 if (!defined('PAD_LOGO_DEFAULT_HEIGHT'))
 	define('PAD_LOGO_DEFAULT_HEIGHT', 250);
 
+if (!defined('PAD_NAV_CHANGE_SCROLL_THRESHOLD'))
+    define('PAD_NAV_CHANGE_SCROLL_THRESHOLD', 100);
+
 if (!defined('PAD_THEME_HOME_PAGE_EQ_CLASS'))
 	define('PAD_THEME_HOME_PAGE_EQ_CLASS', 'hero-layout');
 
@@ -294,6 +297,8 @@ function load_vendor_scripts() {
 		wp_get_theme()->get('Version'),
 		true
 	);
+
+    set_client_configuration();
 
 
 }
@@ -759,6 +764,42 @@ function create_default_objects() {
     }
 
 }
+
+
+/*
+ * Configuration globals and localization of client-side text objects
+ */
+
+function set_client_configuration () {
+
+    global $post;
+    global $wp_query ;
+
+    $site_url = array('site_url' => __(site_url()));
+
+    $options = get_option( PAD_THEME_OPTIONS_NAME );
+    if ( isset(  $options['nav_change_scroll_threshold']) ) {
+        $nav_change_scroll_threshold = $options['nav_change_scroll_threshold'];
+    }
+    else {
+        $nav_change_scroll_threshold = PAD_NAV_CHANGE_SCROLL_THRESHOLD ;
+    }
+
+
+    wp_localize_script( 'pad-custom-jsr' , 'padThemeObjects', array(
+        
+        'configuration' => array(
+            'wpsiteinfo' => $site_url,
+            'navAffixScrollThreshold' => $nav_change_scroll_threshold
+        ),
+        
+        'l10n' => array(
+            
+        )
+
+    ));
+}
+
 
 
 

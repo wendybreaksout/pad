@@ -15,6 +15,7 @@ class PAD_Theme_Settings
 
     private $default_logo_height = PAD_LOGO_DEFAULT_HEIGHT;
     private $default_logo_width = PAD_LOGO_DEFAULT_WIDTH;
+    private $default_nav_change_scroll_threshold = PAD_NAV_CHANGE_SCROLL_THRESHOLD;
 
     /**
      * Constructor
@@ -107,6 +108,13 @@ class PAD_Theme_Settings
             'pad-theme-settings-general-section'
         );
 
+        add_settings_field(
+            'nav_change_scroll_threshold',
+            __( 'Navigation Change Scroll Threshold', PAD_THEME_TEXTDOMAIN ),
+            array($this, 'nav_change_scroll_threshold_render'),
+            'pad-theme-settings-page',
+            'pad-theme-settings-general-section'
+        );
 
     }
 
@@ -206,6 +214,23 @@ class PAD_Theme_Settings
         <?php
 
     }
+
+    public function nav_change_scroll_threshold_render(  ) {
+
+        $options = get_option( $this->options_name );
+        if ( isset( $options['nav_change_scroll_threshold'])) {
+            $nav_change_scroll_threshold = $options['nav_change_scroll_threshold'] ;
+        }
+        else {
+            $nav_change_scroll_threshold = $this->default_nav_change_scroll_threshold ;
+        }
+        ?>
+        <input id="pad_theme_nav_change_scroll_threshold_input" type="number" name="pad_theme_settings[nav_change_scroll_threshold]" value='<?php echo $nav_change_scroll_threshold; ?>'>
+        <br><label for="pad_theme_nav_change_scroll_threshold_input"><?php _e('This is the number of pixels to scroll before navigation color and size changes are triggered. Set to -1 to disable this feature.', PAD_THEME_TEXTDOMAIN) ?></label>
+        <?php
+
+    }
+
 
 
     /*
@@ -312,7 +337,16 @@ class PAD_Theme_Settings
             // set to default
             $new_input['logo_height'] = PAD_LOGO_DEFAULT_HEIGHT ;
         }
-        
+
+        if( isset( $input['nav_change_scroll_threshold'] ) ) {
+            $new_input['nav_change_scroll_threshold'] = intval( $input['nav_change_scroll_threshold'] );
+        }
+        else {
+            // set to default
+            $new_input['nav_change_scroll_threshold'] = $this->default_nav_change_scroll_threshold ;
+        }
+
+
         return $new_input ;
     }
 

@@ -133,7 +133,7 @@
     // Offset for Main Navigation
     $('#site-navigation').affix({
         offset: {
-            top: 100
+            top: padThemeObjects.configuration.navAffixScrollThreshold
         }
     });
 

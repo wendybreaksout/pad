@@ -10,6 +10,9 @@ class PAD_Theme_Settings
     private $version = PAD_THEME_VERSION ;
 
     private $default_display_site_title = true;
+    private $default_display_site_tagline = true;
+    private $default_display_logo = true;
+
     private $default_logo_height = PAD_LOGO_DEFAULT_HEIGHT;
     private $default_logo_width = PAD_LOGO_DEFAULT_WIDTH;
 
@@ -73,6 +76,22 @@ class PAD_Theme_Settings
         );
 
         add_settings_field(
+            'display_site_tagline',
+            __( 'Display site tagline', PAD_THEME_TEXTDOMAIN ),
+            array($this, 'display_site_tagline_render'),
+            'pad-theme-settings-page',
+            'pad-theme-settings-general-section'
+        );
+
+        add_settings_field(
+            'display_logo',
+            __( 'Display logo', PAD_THEME_TEXTDOMAIN ),
+            array($this, 'display_logo_render'),
+            'pad-theme-settings-page',
+            'pad-theme-settings-general-section'
+        );
+
+        add_settings_field(
             'logo_width',
             __( 'Logo Width', PAD_THEME_TEXTDOMAIN ),
             array($this, 'logo_width_render'),
@@ -116,6 +135,38 @@ class PAD_Theme_Settings
         ?>
         <input id="pad_theme_display_site_title_input" type="checkbox" name="pad_theme_settings[display_site_title]" <?php checked( $display_site_title, 1 ); ?> value='1'>
         <br><label for="pad_theme_display_site_title_input"><?php _e('Display site title in header', PAD_THEME_TEXTDOMAIN) ?></label>
+        <?php
+
+    }
+
+    public function display_site_tagline_render(  ) {
+
+        $options = get_option( $this->options_name );
+        if ( isset($options['display_site_tagline'] )) {
+            $display_site_tagline = $options['display_site_tagline'] ;
+        }
+        else {
+            $display_site_tagline = $this->default_display_site_tagline;
+        }
+        ?>
+        <input id="pad_theme_display_site_tagline_input" type="checkbox" name="pad_theme_settings[display_site_tagline]" <?php checked( $display_site_tagline, 1 ); ?> value='1'>
+        <br><label for="pad_theme_display_site_tagline_input"><?php _e('Display site tagline in header', PAD_THEME_TEXTDOMAIN) ?></label>
+        <?php
+
+    }
+
+    public function display_logo_render(  ) {
+
+        $options = get_option( $this->options_name );
+        if ( isset($options['display_logo'] )) {
+            $display_logo = $options['display_logo'] ;
+        }
+        else {
+            $display_logo = $this->default_display_logo;
+        }
+        ?>
+        <input id="pad_theme_display_logo_input" type="checkbox" name="pad_theme_settings[display_logo]" <?php checked( $display_logo, 1 ); ?> value='1'>
+        <br><label for="pad_theme_display_logo_input"><?php _e('Display logo in header', PAD_THEME_TEXTDOMAIN) ?></label>
         <?php
 
     }
@@ -227,6 +278,22 @@ class PAD_Theme_Settings
         else {
             // set to default 
             $new_input['display_site_title'] = false ;
+        }
+
+        if( isset( $input['display_site_tagline'] ) ) {
+            $new_input['display_site_tagline'] = sanitize_text_field( $input['display_site_tagline'] );
+        }
+        else {
+            // set to default
+            $new_input['display_site_tagline'] = false ;
+        }
+
+        if( isset( $input['display_logo'] ) ) {
+            $new_input['display_logo'] = sanitize_text_field( $input['display_logo'] );
+        }
+        else {
+            // set to default
+            $new_input['display_logo'] = false ;
         }
 
 

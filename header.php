@@ -19,6 +19,28 @@
 <?php
 wp_head();
 $pad_theme_options = get_option( PAD_THEME_OPTIONS_NAME );
+
+if ( isset($pad_theme_options['display_logo'] )) {
+    $pad_display_logo = $pad_theme_options['display_logo'];
+}
+else {
+    $pad_display_logo = true;
+}
+
+if ( isset($pad_theme_options['display_site_title'] )) {
+    $pad_display_site_title = $pad_theme_options['display_site_title'];
+}
+else {
+    $pad_display_site_title = true;
+}
+
+if ( isset($pad_theme_options['display_site_tagline'] )) {
+    $pad_display_site_tagline = $pad_theme_options['display_site_tagline'];
+}
+else {
+    $pad_display_site_tagline = true;
+}
+
 ?>
 </head>
 <?php
@@ -87,11 +109,19 @@ $pad_page_body_class = get_post_meta( get_the_ID(), 'body_class');
                         </button>
                     </div>
 
-                    <div id="pad-logo-container" class="navbar-header">
+                    <?php
+                    if ( $pad_display_logo ) {
+                    ?>
+                        <div id="pad-logo-container" class="navbar-header">
 
-                        <?php echo $logo_markup ; echo $light_logo_markup ?>
+                            <?php echo $logo_markup ; echo $light_logo_markup ?>
 
-                    </div>
+                        </div>
+
+                    <?php
+                    }
+                    ?>
+
                 </div> <!-- col 1 -->
                 <div class="col-md-10">
                     <?php
@@ -139,19 +169,26 @@ $pad_page_body_class = get_post_meta( get_the_ID(), 'body_class');
 
                             ?>
                             <?php
-                            if ( is_front_page() && is_home() ) : ?>
 
-                                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                            <?php else : ?>
-                                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                                <?php
-                            endif;
+                            if ( $pad_display_site_title ) {
+                                if ( is_front_page() && is_home() ) : ?>
 
-                            $description = get_bloginfo( 'description', 'display' );
-                            if ( $description || is_customize_preview() ) : ?>
-                                <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-                                <?php
-                            endif; ?>
+                                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                                <?php else : ?>
+                                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                                    <?php
+                                endif;
+                            }
+
+                            if ( $pad_display_site_tagline ) {
+                                $description = get_bloginfo( 'description', 'display' );
+                                if ( $description || is_customize_preview() ) : ?>
+                                    <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+                                    <?php
+                                endif;
+                            }
+
+                            ?>
                         </div><!-- .site-branding -->
 
                     </header><!-- #masthead -->

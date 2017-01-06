@@ -21,6 +21,8 @@
  * @uses pad_header_style()
  */
 function pad_custom_header_setup() {
+	
+	
 	add_theme_support( 'custom-header', apply_filters( 'pad_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
@@ -31,9 +33,26 @@ function pad_custom_header_setup() {
 	) ) );
 
 	// Custom logo
+	
+	$options  = get_option( PAD_THEME_OPTIONS_NAME );
+
+	if ( isset( $options['logo_width' ])) {
+		$logo_width = $options['logo_width'];
+	}
+	else {
+		$logo_width = PAD_LOGO_DEFAULT_WIDTH;
+	}
+
+	if ( isset( $options['logo_height' ])) {
+		$logo_height = $options['logo_height'];
+	}
+	else {
+		$logo_height = PAD_LOGO_DEFAULT_HEIGHT;
+	}
+
 	add_theme_support( 'custom-logo', array(
-		'height'      => 250,
-		'width'       => 250,
+		'height'      => $logo_height,
+		'width'       => $logo_width,
 		'flex-width' => true,
 	) );
 }

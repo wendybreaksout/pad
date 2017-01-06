@@ -27,6 +27,12 @@ if (!defined('PAD_TABLET_EXCERPT_WORDS'))
 if (!defined('PAD_MOBILE_EXCERPT_WORDS'))
     define('PAD_MOBILE_EXCERPT_WORDS', 50);
 
+if (!defined('PAD_LOGO_DEFAULT_WIDTH'))
+	define('PAD_LOGO_DEFAULT_WIDTH', 250);
+
+if (!defined('PAD_LOGO_DEFAULT_HEIGHT'))
+	define('PAD_LOGO_DEFAULT_HEIGHT', 250);
+
 if (!defined('PAD_THEME_HOME_PAGE_EQ_CLASS'))
 	define('PAD_THEME_HOME_PAGE_EQ_CLASS', 'hero-layout');
 

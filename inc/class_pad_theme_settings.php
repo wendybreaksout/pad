@@ -10,6 +10,8 @@ class PAD_Theme_Settings
     private $version = PAD_THEME_VERSION ;
 
     private $default_display_site_title = true;
+    private $default_logo_height = PAD_LOGO_DEFAULT_HEIGHT;
+    private $default_logo_width = PAD_LOGO_DEFAULT_WIDTH;
 
     /**
      * Constructor
@@ -70,6 +72,22 @@ class PAD_Theme_Settings
             'pad-theme-settings-general-section'
         );
 
+        add_settings_field(
+            'logo_width',
+            __( 'Logo Width', PAD_THEME_TEXTDOMAIN ),
+            array($this, 'logo_width_render'),
+            'pad-theme-settings-page',
+            'pad-theme-settings-general-section'
+        );
+
+        add_settings_field(
+            'logo_height',
+            __( 'Logo Height', PAD_THEME_TEXTDOMAIN ),
+            array($this, 'logo_height_render'),
+            'pad-theme-settings-page',
+            'pad-theme-settings-general-section'
+        );
+
 
     }
 
@@ -95,6 +113,43 @@ class PAD_Theme_Settings
         <?php
 
     }
+
+    /*
+    * Render logo height, width fields.
+    * @since 1.0.0
+    */
+    public function logo_width_render(  ) {
+
+        $options = get_option( $this->options_name );
+        if ( isset( $options['logo_width'])) {
+            $logo_width = $options['logo_width'] ;
+        }
+        else {
+            $logo_width = $this->default_logo_width ;
+        }
+        ?>
+        <input id="pad_theme_logo_width_input" type="number" name="pad_theme_settings[logo_width]" value='<?php echo $logo_width ; ?>'>
+        <br><label for="pad_theme_logo_width_input"><?php _e('Set suggested width for site logo', PAD_THEME_TEXTDOMAIN) ?></label>
+        <?php
+
+    }
+
+    public function logo_height_render(  ) {
+
+        $options = get_option( $this->options_name );
+        if ( isset( $options['logo_height'])) {
+            $logo_height = $options['logo_height'] ;
+        }
+        else {
+            $logo_height = $this->default_logo_height ;
+        }
+        ?>
+        <input id="pad_theme_logo_height_input" type="number" name="pad_theme_settings[logo_height]" value='<?php echo $logo_height; ?>'>
+        <br><label for="pad_theme_logo_height_input"><?php _e('Set suggested height for site logo', PAD_THEME_TEXTDOMAIN) ?></label>
+        <?php
+
+    }
+
 
     /*
 	 * Calls add_options_page to register the page and menu item.
@@ -166,6 +221,23 @@ class PAD_Theme_Settings
         else {
             // set to default 
             $new_input['display_site_title'] = false ;
+        }
+
+
+        if( isset( $input['logo_width'] ) ) {
+            $new_input['logo_width'] = intval( $input['logo_width'] );
+        }
+        else {
+            // set to default
+            $new_input['logo_width'] = PAD_LOGO_DEFAULT_WIDTH ;
+        }
+
+        if( isset( $input['logo_height'] ) ) {
+            $new_input['logo_height'] = intval( $input['logo_height'] );
+        }
+        else {
+            // set to default
+            $new_input['logo_height'] = PAD_LOGO_DEFAULT_HEIGHT ;
         }
         
         return $new_input ;

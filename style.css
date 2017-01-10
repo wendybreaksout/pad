@@ -2056,7 +2056,7 @@ object {
         font-family: 'Londrina Solid';
         text-shadow: 2px 2px 2px #000000;
         font-size: 1.1em; }
-  .home .entry-header, .hero-layout .entry-header {
+  .home .page .entry-header, .hero-layout .page .entry-header {
     display: none; }
   .home .entry-content, .hero-layout .entry-content {
     margin-top: 0; }

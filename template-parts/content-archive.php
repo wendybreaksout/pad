@@ -28,18 +28,29 @@
 	</header><!-- .entry-header -->
 
 	<div class="row entry-content">
-		<div class="col-xs-12 col-sm-6">
-			<?php
 
-			// TODO: make thumbnail size configurable
-			// the_post_thumbnail((array(200,200))) ;
-            $image = new Pad_Image();
-            $formatted_image = $image->get_image( get_the_ID());
-            echo $formatted_image;
-            // echo $image->get_image( get_the_ID() );
-			?>
-		</div>
-		<div class="col-xs-12 col-sm-6 pad-archive-excerpt-container">
+		<?php
+		// TODO: make thumbnail size configurable
+		// the_post_thumbnail((array(200,200))) ;
+		$image = new Pad_Image();
+		$formatted_image = $image->get_image( get_the_ID());
+
+		if ( !empty ( $formatted_image ) ) {
+		?>
+			<div class="col-xs-12 col-sm-6">
+				<?php
+				echo $formatted_image;
+				?>
+			</div>
+
+		<?php
+			$col2_class = "col-sm-6" ;
+		}
+		else {
+			$col2_class = "" ;
+		}
+		?>
+		<div class="col-xs-12 <?php echo $col2_class ; ?> pad-archive-excerpt-container">
 			<?php
 			the_excerpt( sprintf(
 			/* translators: %s: Name of current post. */

@@ -90,9 +90,6 @@
     }
   }
 
-  #content {
-    margin-top: 0;
-  }
 
   .container-fluid {
     padding-left: 30px;
@@ -218,6 +215,14 @@
         display: block;
       }
     }
+  }
+}
+
+.home.page,
+.hero-layout.page {
+  #content {
+    margin-top: 0;
+
   }
 }
 

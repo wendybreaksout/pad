@@ -2079,8 +2079,6 @@ object {
       background-color: transparent;
       color: #ffffff !important;
       font-size: 1.2em; }
-  .home #content, .hero-layout #content {
-    margin-top: 0; }
   .home .container-fluid, .hero-layout .container-fluid {
     padding-left: 30px;
     padding-right: 30px; }
@@ -2162,6 +2160,10 @@ object {
       opacity: 0; }
     .home #site-navigation.navbar-custom.affix .normal-logo, .hero-layout #site-navigation.navbar-custom.affix .normal-logo {
       display: block; } }
+.home.page #content,
+.hero-layout.page #content {
+  margin-top: 0; }
+
 @media (max-width: 991px) {
   .home #content, .hero-layout #content {
     margin-top: 65px; }

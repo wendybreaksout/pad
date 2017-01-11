@@ -452,6 +452,12 @@ header {
       font-size: 75px;
       line-height: 75px;
       margin-bottom: 50px; } }
+#header-full-width {
+  padding: 0; }
+
+.header-full-width section {
+  padding: 0; }
+
 section {
   padding: 100px 0; }
   section h2.section-heading {

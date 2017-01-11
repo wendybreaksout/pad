@@ -196,6 +196,14 @@ $pad_page_body_class = get_post_meta( get_the_ID(), 'body_class');
             </div>
         </div> <!-- container -->
     </nav><!-- #site-navigation -->
+    <div id="header-full-width" class="container-fluid header-full-width">
+        <div class="row">
+                <?php
+                dynamic_sidebar('header_fullwidth_widget_area');
+                ?>
+            </div>
+    </div>
+
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <!--Content-->

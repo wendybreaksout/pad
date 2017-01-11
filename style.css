@@ -925,7 +925,8 @@ body {
   -webkit-tap-highlight-color: #197002; }
 
 .pad-archive {
-  margin-bottom: 65px; }
+  margin-bottom: 65px;
+  overflow: hidden; }
   .pad-archive .entry-content {
     padding-bottom: 30px;
     max-height: 400px; }

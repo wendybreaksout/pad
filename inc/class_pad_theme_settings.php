@@ -17,6 +17,8 @@ class PAD_Theme_Settings
     private $default_logo_width = PAD_LOGO_DEFAULT_WIDTH;
     private $default_nav_change_scroll_threshold = PAD_NAV_CHANGE_SCROLL_THRESHOLD;
 
+    private $default_show_archive_full_text = false;
+
     /**
      * Constructor
      *
@@ -116,6 +118,13 @@ class PAD_Theme_Settings
             'pad-theme-settings-general-section'
         );
 
+        add_settings_field(
+            'show_archive_full_text',
+            __( 'Show full text in archive listings (instead of an excerpt)', PAD_THEME_TEXTDOMAIN ),
+            array($this, 'show_archive_full_text_render'),
+            'pad-theme-settings-page',
+            'pad-theme-settings-general-section'
+        );
     }
 
 
@@ -231,7 +240,23 @@ class PAD_Theme_Settings
 
     }
 
+    public function show_archive_full_text_render(  )
+    {
 
+        $options = get_option($this->options_name);
+        if (isset($options['show_archive_full_text'])) {
+            $show_archive_full_text = $options['show_archive_full_text'];
+        } else {
+            $show_archive_full_text = $this->default_show_archive_full_text;
+        }
+        ?>
+        <input id="pad_theme_show_archive_full_text_input" type="checkbox"
+               name="pad_theme_settings[show_archive_full_text]" <?php checked($show_archive_full_text, 1); ?> value='1'>
+        <br><label
+        for="pad_theme_show_archive_full_text_input"><?php _e('Show full text (instead of excerpt) in post archive listings', PAD_THEME_TEXTDOMAIN) ?></label>
+        <?php
+
+    }
 
     /*
 	 * Calls add_options_page to register the page and menu item.
@@ -344,6 +369,14 @@ class PAD_Theme_Settings
         else {
             // set to default
             $new_input['nav_change_scroll_threshold'] = $this->default_nav_change_scroll_threshold ;
+        }
+
+        if( isset( $input['show_archive_full_text'] ) ) {
+            $new_input['show_archive_full_text'] = sanitize_text_field( $input['show_archive_full_text'] );
+        }
+        else {
+            // set to default
+            $new_input['show_archive_full_text'] = $this->default_show_archive_full_text ;
         }
 
 

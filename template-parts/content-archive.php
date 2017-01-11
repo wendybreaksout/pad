@@ -7,6 +7,15 @@
  * @package PAD
  */
 
+$options = get_option( PAD_THEME_OPTIONS_NAME );
+if ( isset( $options['show_archive_full_text'] ) && $options['show_archive_full_text'] == false ) {
+    $show_full_text = false;
+}
+else {
+    $show_full_text = true;
+}
+
+
 ?>
 <article class="container hoverable pad-archive" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="row entry-header">
@@ -35,7 +44,8 @@
 		$image = new Pad_Image();
 		$formatted_image = $image->get_image( get_the_ID());
 
-		if ( !empty ( $formatted_image ) ) {
+        // Show thumbnail if there is one and only if display mode is not full text.
+		if ( !empty ( $formatted_image ) && $show_full_text === false ) {
 		?>
 			<div class="col-xs-12 col-sm-6">
 				<?php
@@ -52,16 +62,24 @@
 		?>
 		<div class="col-xs-12 <?php echo $col2_class ; ?> pad-archive-excerpt-container">
 			<?php
-			the_excerpt( sprintf(
-			/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'pad' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			), true);
-
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pad' ),
-				'after'  => '</div>',
-			) );
+            
+            if ( $show_full_text === false ) {
+            
+                the_excerpt( sprintf(
+                /* translators: %s: Name of current post. */
+                    wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'pad' ), array( 'span' => array( 'class' => array() ) ) ),
+                    the_title( '<span class="screen-reader-text">"', '"</span>', false )
+                ), true);
+    
+                wp_link_pages( array(
+                    'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pad' ),
+                    'after'  => '</div>',
+                ) );
+                
+            }
+            else {
+                the_content();
+            }
 			?>
 			<footer class="row entry-footer">
 				<div class="col-xs-12">

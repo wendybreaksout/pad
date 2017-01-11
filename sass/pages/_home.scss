@@ -12,6 +12,10 @@
 
   }
 
+  #header-full-width {
+    margin-top: 0;
+  }
+
   #pad-product-section {
     margin: 75px 0;
   }
@@ -225,6 +229,8 @@
 
   }
 }
+
+
 
 
 @media( max-width: $bp-tablet-desktop - 1px ) {

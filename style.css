@@ -453,7 +453,8 @@ header {
       line-height: 75px;
       margin-bottom: 50px; } }
 #header-full-width {
-  padding: 0; }
+  padding: 0;
+  margin-top: 100px; }
 
 .header-full-width section {
   padding: 0; }
@@ -1600,7 +1601,7 @@ p.site-description {
   margin: 0 0 1.5em; }
 
 #content {
-  margin-top: 125px; }
+  margin-top: 100px; }
 
 /*--------------------------------------------------------------
 ## Comments
@@ -2042,6 +2043,8 @@ object {
     color: #197002; }
   .home p, .hero-layout p {
     font-size: 1.4em; }
+  .home #header-full-width, .hero-layout #header-full-width {
+    margin-top: 0; }
   .home #pad-product-section, .hero-layout #pad-product-section {
     margin: 75px 0; }
   .home .sow-slide-nav, .hero-layout .sow-slide-nav {

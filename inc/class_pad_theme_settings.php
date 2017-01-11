@@ -18,6 +18,8 @@ class PAD_Theme_Settings
     private $default_nav_change_scroll_threshold = PAD_NAV_CHANGE_SCROLL_THRESHOLD;
 
     private $default_show_archive_full_text = false;
+    private $default_display_blog_sidebar = true;
+
 
     /**
      * Constructor
@@ -122,6 +124,14 @@ class PAD_Theme_Settings
             'show_archive_full_text',
             __( 'Show full text in archive listings (instead of an excerpt)', PAD_THEME_TEXTDOMAIN ),
             array($this, 'show_archive_full_text_render'),
+            'pad-theme-settings-page',
+            'pad-theme-settings-general-section'
+        );
+
+        add_settings_field(
+            'display_blog_sidebar',
+            __( 'Display right sidebar with blog/archive listings', PAD_THEME_TEXTDOMAIN ),
+            array($this, 'display_blog_sidebar_render'),
             'pad-theme-settings-page',
             'pad-theme-settings-general-section'
         );
@@ -258,6 +268,23 @@ class PAD_Theme_Settings
 
     }
 
+    public function display_blog_sidebar_render(  )
+    {
+
+        $options = get_option($this->options_name);
+        if (isset($options['display_blog_sidebar'])) {
+            $display_blog_sidebar = $options['display_blog_sidebar'];
+        } else {
+            $display_blog_sidebar = $this->default_display_blog_sidebar;
+        }
+        ?>
+        <input id="pad_theme_display_blog_sidebar_input" type="checkbox"
+               name="pad_theme_settings[display_blog_sidebar]" <?php checked($display_blog_sidebar, 1); ?> value='1'>
+        <br><label
+        for="pad_theme_display_blog_sidebar_input"><?php _e('Display right sidebar with blog post archive listings.', PAD_THEME_TEXTDOMAIN) ?></label>
+        <?php
+
+    }
     /*
 	 * Calls add_options_page to register the page and menu item.
 	 * 
@@ -379,6 +406,13 @@ class PAD_Theme_Settings
             $new_input['show_archive_full_text'] = $this->default_show_archive_full_text ;
         }
 
+        if( isset( $input['display_blog_sidebar'] ) ) {
+            $new_input['display_blog_sidebar'] = sanitize_text_field( $input['display_blog_sidebar'] );
+        }
+        else {
+            // set to default
+            $new_input['display_blog_sidebar'] = false;
+        }
 
         return $new_input ;
     }

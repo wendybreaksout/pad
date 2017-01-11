@@ -17,7 +17,7 @@ else {
 
 
 ?>
-<article class="container hoverable pad-archive" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article class="hoverable pad-archive" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="row entry-header">
 		<div class="col-xs-12">
 			<?php

@@ -526,7 +526,7 @@ class PAD_Shortcodes
                 'categories'    => '',
                 'category_ids'  => '',
                 'tags'          => '',
-                'card-group'    => '',
+                'card_group'    => '',
                 'id'            => '',
                 'name'          => ''
 

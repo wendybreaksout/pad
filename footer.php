@@ -18,7 +18,7 @@ $sidebar_ids = array(   'footer_first_widget_area',
 
 $sidebars_with_content = array();
 foreach ( $sidebar_ids as $sidebar_id ) {
-  if ( dynamic_sidebar( $sidebar_id )) {
+  if ( is_active_sidebar( $sidebar_id )) {
       $sidebars_with_content[] = $sidebar_id;
   }
 }

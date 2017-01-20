@@ -48,6 +48,10 @@ switch ( $sidebar_count ) {
 
 	</div><!-- #content -->
 
+    <div class="scroll-to-top">
+        <a href="#"><i class="fa fa-arrow-circle-up fa-3x"></i></a>
+    </div>
+
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="container">
 			<div class="row">
@@ -73,6 +77,7 @@ switch ( $sidebar_count ) {
 		
 	</footer><!-- #colophon -->
 </div><!-- #page -->
+
 
 <?php wp_footer(); ?>
 

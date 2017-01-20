@@ -914,6 +914,16 @@ footer {
   .book-promo-header .textwidget {
     padding: 0 30px; }
 
+/*
+ *
+ */
+.scroll-to-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1; }
+
 ::-moz-selection {
   text-shadow: none;
   background: #197002; }

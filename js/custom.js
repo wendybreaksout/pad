@@ -150,7 +150,20 @@
 
     $('.pad-card-group').matchHeight();
 
+    // Show/hide scroll to top icon, language swither
+    $(window).scroll( function( ) {
+
+        var pos = $(window).scrollTop();
+        if (pos > (2 * window.innerHeight)) {
+            $('.scroll-to-top').show();
+        }
+        else {
+            $('.scroll-to-top').hide();
+        }
+    });
 
 
 
-})(jQuery); // End of use strict
+
+
+    })(jQuery); // End of use strict

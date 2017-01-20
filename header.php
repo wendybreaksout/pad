@@ -82,7 +82,9 @@ if ( $custom_logo_id ) {
 
 }
 
-$pad_page_body_class = get_post_meta( get_the_ID(), 'body_class');
+$pad_page_body_class = get_post_meta( get_the_ID(), 'body_class', true);
+$pad_full_width_header_text = get_post_meta( get_the_ID(), 'full_width_header_text', true);
+
 ?>
 
 <body <?php body_class( $pad_page_body_class ); ?>>
@@ -199,7 +201,18 @@ $pad_page_body_class = get_post_meta( get_the_ID(), 'body_class');
     <div id="header-full-width" class="container-fluid header-full-width">
         <div class="row">
                 <?php
-                dynamic_sidebar('header_fullwidth_widget_area');
+                if ( is_active_sidebar('header_fullwidth_widget_area')) {
+                    dynamic_sidebar('header_fullwidth_widget_area');
+                    if ( !empty( $pad_full_width_header_text )) {
+                        ?>
+                        <div class="full-width-header-text">
+                            <p>
+                                <?php echo $pad_full_width_header_text; ?>
+                            </p>
+                        </div>
+                        <?php
+                    }
+                }
                 ?>
             </div>
     </div>

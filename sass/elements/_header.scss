@@ -51,6 +51,15 @@ header {
 #header-full-width {
   padding: 0;
   margin-top: $nav-margin;
+  position: relative;
+  .full-width-header-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    color: $theme-white;
+  }
 }
 
 .header-full-width section {

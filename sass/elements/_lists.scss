@@ -5,6 +5,9 @@ ul, ol {
 
 ul {
 	list-style: disc;
+    li {
+      list-style-type: disc;
+    }
 }
 
 ol {

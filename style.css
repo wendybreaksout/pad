@@ -354,6 +354,8 @@ ul, ol {
 
 ul {
   list-style: disc; }
+  ul li {
+    list-style-type: disc; }
 
 ol {
   list-style: decimal; }
@@ -2029,6 +2031,48 @@ object {
       color: #777777;
       margin-left: 0.5em;
       vertical-align: super; }
+
+.pullquote1-container {
+  width: 33%;
+  float: left;
+  font-size: 1.1em;
+  font-style: italic;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  padding: 20px;
+  border: #777777 solid 1px; }
+  @media (max-width: 768px) {
+    .pullquote1-container {
+      width: 100%;
+      margin: 25px auto 40px; } }
+  .pullquote1-container .pullquote1-content {
+    display: inline;
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: #777777; }
+    .pullquote1-container .pullquote1-content:before {
+      font-family: FontAwesome;
+      content: "\f10d";
+      display: inline;
+      font-size: 0.6em;
+      color: #777777;
+      margin-right: 0.5em;
+      vertical-align: super; }
+    .pullquote1-container .pullquote1-content:after {
+      font-family: FontAwesome;
+      content: "\f10e";
+      display: inline;
+      font-size: 0.6em;
+      color: #777777;
+      margin-left: 0.5em;
+      vertical-align: super; }
+  .pullquote1-container .pullquote1-citation {
+    margin-top: 10px;
+    float: right;
+    font-style: normal; }
+    .pullquote1-container .pullquote1-citation:before {
+      content: "-";
+      padding: 0 0.5em; }
 
 .clearboth {
   width: 100%;

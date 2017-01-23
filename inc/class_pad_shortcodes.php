@@ -26,6 +26,7 @@ class PAD_Shortcodes
         add_shortcode('one_half', array( $this, 'one_half'));
         add_shortcode('one_half_last', array( $this, 'one_half_last'));
         add_shortcode('button', array( $this, 'button'));
+        add_shortcode('pullquote1', array( $this, 'pullquote1'));
         add_shortcode('pullquote2', array( $this, 'pullquote2'));
         add_shortcode('clearboth', array( $this, 'clearboth'));
         add_shortcode('divider', array( $this, 'divider'));
@@ -866,6 +867,41 @@ class PAD_Shortcodes
         return $output ;
 
     }
+
+
+    public function pullquote1 ( $atts, $content ) {
+
+        /** @var  $quotes */
+        /** @var  $cite */
+        /** @var  $align */
+
+
+        $atts_actual = shortcode_atts(
+            array(
+                'quotes'    => 'true',
+                'cite'      => '',
+                'align' => 'left'
+            ),
+            $atts );
+
+
+        extract( $atts_actual );
+
+        $cite_html = '';
+
+        if ( !empty( $cite )) {
+            $cite_html = '<div class="pullquote1-citation">' . $cite . '</div>';
+        }
+
+        $output = '<div class="pullquote1-container">
+                        <div class="pullquote1-content">' . $content .  '</div> ' . $cite_html .  '
+                   </div>';
+
+
+        return $output ;
+
+    }
+
 
     public function clearboth( $atts ) {
 

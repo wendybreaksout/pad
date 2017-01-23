@@ -47,3 +47,63 @@
   }
 
 }
+
+.pullquote1-container {
+
+  width: 33%;
+  float: left;
+  font-size: 1.1em;
+  font-style: italic;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  padding: 20px;
+  border: $gray-light solid 1px;
+
+  @media ( max-width: $bp-mobile-tablet ) {
+    width: 100%;
+    margin: 25px auto 40px;
+  }
+  .pullquote1-content {
+
+    display: inline;
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: $gray-light;
+
+    &:before {
+      font-family: FontAwesome;
+      content: "\f10d";
+      display: inline;
+      font-size: 0.6em;
+      color: $gray-light;
+      margin-right: 0.5em;
+      vertical-align: super;
+    }
+
+    &:after {
+      font-family: FontAwesome;
+      content: "\f10e";
+      display: inline;
+      font-size: 0.6em;
+      color: $gray-light;
+      margin-left: 0.5em;
+      vertical-align: super;
+
+    }
+
+
+  }
+
+  .pullquote1-citation {
+
+    margin-top: 10px;
+    float: right;
+    font-style: normal;
+
+    &:before {
+      content: "-";
+      padding: 0 0.5em;
+    }
+
+  }
+}

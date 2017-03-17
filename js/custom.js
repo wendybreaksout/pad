@@ -10,6 +10,53 @@
         });
     });
 
+
+    // Start carousel
+    $('.carousel-item-container .pad-product-panel').hover( function() {
+            $( this ).find('span.pad-hover-caption').css('opacity', '1');
+        },
+        function(){
+            $( this ).find('span.pad-hover-caption').css('opacity', '0');
+        });
+
+
+    $('.pad-product-carousel').slick({
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        arrows: true,
+        mobileFirst: true,
+        centerMode: true,
+        dots: true,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 4,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 995,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+    });
+
+    // End carousel
+
+
     /*
      * Set fillwidth or fillheight on card images based on image aspect ratio relative
      * to that of the container.

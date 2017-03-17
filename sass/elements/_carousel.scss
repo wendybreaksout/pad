@@ -1,0 +1,22 @@
+
+.slick-carousel-wrapper {
+  height: 400px;
+  overflow: visible;
+}
+
+.slick-prev {
+  &:before {
+    color: #000000;
+  }
+}
+
+.slick-next {
+  &:before {
+    color: #000000;
+  }
+}
+
+.carousel-item-container {
+  padding: 5px;
+  background-color: $theme-white;
+}

@@ -21,6 +21,8 @@ class PAD_Shortcodes
 
         add_shortcode('pad_product', array( $this, 'pad_product'));
         add_shortcode('pad_products', array( $this, 'pad_products'));
+        add_shortcode('pad_product_carousel', array( $this, 'pad_product_carousel'));
+        add_shortcode('pad_product_simple', array( $this, 'pad_product_simple'));
         add_shortcode('pad_featured_article', array( $this, 'pad_featured_article'));
         add_shortcode('pad_modal', array( $this, 'pad_modal'));
         add_shortcode('one_half', array( $this, 'one_half'));
@@ -295,7 +297,241 @@ class PAD_Shortcodes
 
     }
 
- 
+
+    public function pad_product_carousel( $atts, $content  ) {
+
+        /** @var  $products */
+
+        $atts_actual = shortcode_atts(
+            array(
+                'products'                => '',
+            ),
+            $atts );
+
+
+        extract( $atts_actual );
+        $product_slugs = explode(' ', $products );
+
+        $output = '<div class="slick-carousel-wrapper">';
+
+        $output .= '<div id="pad-product-carousel" class="pad-product-carousel">';
+
+        foreach ( $product_slugs as $product_slug ) {
+
+            $output .= '<div class="carousel-item-container">';
+            $output .=  do_shortcode( '[pad_product_simple  name="' . $product_slug . '" word_count="23"]') ;
+            // $output .= '<img src="http://placehold.it/250x250">';
+            $output .= '</div>' ;
+
+        }
+
+        $output .= '</div>' ;
+        $output .= '</div>' ;
+
+
+
+
+        return $output ;
+
+    }
+
+    public function pad_product_simple( $atts ) {
+
+
+        /** @var  $name */
+        /** @var  $badge_text */
+        /** @var  $image_size */
+        /** @var  $horizontal */
+        /** @var  $image_right */
+        /** @var  $word_count */
+        /** @var  $card_group */
+
+
+
+        $atts_actual = shortcode_atts(
+            array(
+                'name'                => '',
+                'badge_text'          => __('Sale', PAD_THEME_TEXTDOMAIN),
+                'image_size'          => 'medium',
+                'horizontal'          => 'false',
+                'image_right'         => 'false',
+                'word_count'          => '-1',
+                'card_group'          => ''
+            ),
+            $atts );
+
+
+        extract( $atts_actual );
+
+        $word_count = intval( $word_count);
+
+        $args = array(
+            'post_type'      => 'product',
+            'post_status'    => 'publish',
+            'post_count'     => 1,
+            'posts_per_page' => 1
+        );
+
+        // If name is not set, default to the most recent product.
+        if ( !empty( $name )) {
+            $args['name'] = $name ;
+        }
+
+        $product_query = new WP_Query( $args );
+
+        if ( $product_query->have_posts() ) {
+
+            $output = '<div class="container-fluid pad-product">' ;
+
+
+            while ( $product_query->have_posts() ) : $product_query->the_post();
+
+                $id = get_the_ID();
+
+                /*
+                 * Try to pull two images out of product gallery. Failing that, use featured image.
+                 */
+
+                global $product;
+
+                $attachment_ids = $product->get_gallery_attachment_ids();
+
+                $gallery_images = array();
+                $attachment_count = 0;
+                $attachment_id = $attachment_ids[0];
+
+                $slide_class = 'pad-hover-caption-image product-image-bottom';
+                $post_image_src = wp_get_attachment_image_src($attachment_id, $image_size);
+                $post_image_html = wp_get_attachment_image( $attachment_id, $image_size , false, array( 'class' => 'attachment-' . $image_size . ' size-' . $image_size . ' img-fluid ' . $slide_class));
+                $img_width = $post_image_src[1];
+                $img_height = $post_image_src[2];
+                $data_str = ' data-width="' . $img_width . '" data-height="' . $img_height . '" />';
+
+                $post_image_html = str_replace('/>', $data_str, $post_image_html );
+                $post_image_html = '<a href="' . get_permalink( $id ) . '">' . $post_image_html .  '</a>';
+
+                if ( isset( $post_image_html )) {
+                    $gallery_images[ 0 ] = $post_image_html;
+                }
+                else {
+                    error_log(__FILE__ . ' ' . __LINE__ . ': ' . __('No images for product.', PAD_THEME_TEXTDOMAIN) );
+                }
+
+
+                if ( has_post_thumbnail( $id ) ) {
+                    $post_thumbnail_id = get_post_thumbnail_id($id);
+                    $post_image_src = wp_get_attachment_image_src($post_thumbnail_id, $image_size );
+                    if ( isset( $post_image_src )) {
+                        $post_thumbnail_url = $post_image_src[0];
+                    }
+                    else {
+                        $post_thumbnail_url = "http://placehold.it/150x150";
+                    }
+                }
+
+                if ( has_post_thumbnail( $id ) ) {
+                    $post_thumbnail_id = get_post_thumbnail_id($id);
+                    $post_image_src = wp_get_attachment_image_src($post_thumbnail_id, $image_size );
+                    if ( isset( $post_image_src )) {
+                        $post_thumbnail_url = $post_image_src[0];
+                    }
+                    else {
+                        $post_thumbnail_url = "http://placehold.it/150x150";
+                    }
+                }
+
+                $post_title= get_the_title();
+                $post_url = get_the_permalink();
+
+                $post_excerpt = get_the_excerpt();
+                if ( $word_count === 0 ) {
+                    $post_excerpt = '';
+                }
+                else if ( $word_count > 0 ){
+                    $post_excerpt = wp_trim_words( $post_excerpt, $word_count );
+                }
+
+                $product = wc_get_product( $id );
+                $price = $product->get_price_html();
+
+                if ( $product->is_on_sale() ){
+                    $badge = '<span class="pad-onsale">' . $badge_text . '</span>';
+                }
+                else {
+                    $badge = '';
+                }
+
+                /*
+                 * Add code to get product images, similar to what is shown here:
+                 * http://sarathlal.com/get-product-gallery-images-woocommerce/
+                 *
+                 * Then create transition on hover effect as described here:
+                 * http://css3.bradshawenterprises.com/cfimg/
+                 */
+
+
+
+
+                $image_html = '
+                        <div class="pad-product-hover-slide pad-carousel-slide">' .
+                    $badge .
+                    $gallery_images[0] .
+                    '<a href="' . $post_url . '"><span class="pad-hover-caption"><span class="truncate-ellipsis">' . $post_excerpt . '</span></span></a>' .
+                    '</div>';
+
+
+
+                $excerpt_html = '';
+
+
+                $card_html = '
+                    <div class="card hoverable pad-card-group" data-mh="'. $card_group .'">
+                        ' . $image_html . '
+                        <div class="card-block">
+                            <!--Title-->
+                            <h3 class="card-title"><a href="' . $post_url . '">' . $post_title . '</a></h3>
+                                ' . $excerpt_html .  '
+                            <div class="pad-product-button">                     
+                                <a href="' .  $post_url . '" class="btn pad-theme-color-bg">' .  $price . '</a>
+                            </div>
+                        </div>
+    
+                    </div>
+                    ';
+
+
+                $output .= '
+                    <div class="row pad-product-panel">
+                        <div class="col-xs-12 animated slideInLeft pad-product-card-column">
+                            '  . $card_html  . '
+                        </div> 
+                    </div>
+                    ';
+
+
+
+
+
+            endwhile;
+
+            $output .= '</div>' ; // end row
+
+        }
+
+        wp_reset_postdata();
+
+
+        return $output;
+
+
+
+
+
+    }
+
+
+
+
     public function pad_products( $atts ) {
 
         /** @var  $stagger */

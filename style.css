@@ -1803,6 +1803,9 @@ object {
   margin-top: 150px;
   transform: translateY(-50%); }
 
+.fillwidth.pad-hover-caption-image {
+  margin-top: 112.5px; }
+
 .pad-archive .fillwidth {
   margin-top: 0;
   transform: none; }

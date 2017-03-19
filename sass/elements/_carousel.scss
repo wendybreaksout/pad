@@ -2,17 +2,26 @@
 .slick-carousel-wrapper {
   height: 400px;
   overflow: visible;
+  margin: 0 30px;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-family: 'FontAwesome';
+  font-size: 64px;
+  line-height: 1;
+  opacity: .75;
+  color: $theme-primary;
 }
 
 .slick-prev {
   &:before {
-    color: #000000;
+    content: '\f104';
   }
 }
 
 .slick-next {
   &:before {
-    color: #000000;
+    content: '\f105';
   }
 }
 

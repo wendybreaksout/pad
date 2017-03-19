@@ -23,16 +23,18 @@
     $('.pad-product-carousel').slick({
         infinite: true,
         slidesToShow: 5,
-        slidesToScroll: 1,
+        slidesToScroll: 5,
         arrows: true,
         mobileFirst: true,
         centerMode: true,
+        centerPadding: 0,
         dots: true,
         responsive: [
             {
                 breakpoint: 1200,
                 settings: {
                     slidesToShow: 4,
+                    slidesToScroll: 4,
                     dots: true
                 }
             },
@@ -40,12 +42,28 @@
                 breakpoint: 995,
                 settings: {
                     slidesToShow: 3,
+                    slidesToScroll: 3,
                 }
             },
             {
                 breakpoint: 600,
                 settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 500,
+                settings: {
                     slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 300,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
                 }
             }
             // You can unslick at a given breakpoint now by adding:

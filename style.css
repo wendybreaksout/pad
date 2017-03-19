@@ -936,13 +936,21 @@ footer {
 
 .slick-carousel-wrapper {
   height: 400px;
-  overflow: visible; }
+  overflow: visible;
+  margin: 0 30px; }
+
+.slick-prev:before, .slick-next:before {
+  font-family: 'FontAwesome';
+  font-size: 64px;
+  line-height: 1;
+  opacity: .75;
+  color: #197002; }
 
 .slick-prev:before {
-  color: #000000; }
+  content: '\f104'; }
 
 .slick-next:before {
-  color: #000000; }
+  content: '\f105'; }
 
 .carousel-item-container {
   padding: 5px;
@@ -2009,7 +2017,9 @@ object {
 @media (max-width: 780px) {
   .pad-product .pad-product-hover-slide,
   .pad-product .pad-product-horizontal-hover-slide {
-    height: 500px; } }
+    height: 500px; }
+  .pad-product .pad-carousel-slide {
+    height: 225px; } }
 .pad-product-grid {
   box-sizing: border-box;
   padding-top: 0 !important;

@@ -1913,7 +1913,8 @@ object {
   .pad-product .pad-product-grid-desc {
     padding: 30px 5px 5px 0; }
   .pad-product .pad-product-excerpt {
-    font-size: 16px; }
+    font-size: 16px;
+    margin-bottom: 60px; }
   .pad-product .pad-onsale {
     position: absolute;
     top: 35px;

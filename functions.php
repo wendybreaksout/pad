@@ -273,7 +273,12 @@ function load_vendor_scripts() {
 		true
 	);
 
-
+	wp_enqueue_script( 'pad-cookie-js',
+		get_template_directory_uri() . '/js/js.cookie.js',
+		array('jquery'),
+		wp_get_theme()->get('Version'),
+		true
+	);
 
 	wp_enqueue_script( 'pad-tether',
 		get_template_directory_uri() . '/js/tether.min.js',

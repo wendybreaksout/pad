@@ -10,6 +10,40 @@
         });
     });
 
+    // Set up pad model click on close event handlers
+    var closeOnClickSelector = $('#padModal').data('close-on-click');
+    $( closeOnClickSelector).click( function() {
+            $('#padModal').modal('hide');
+    });
+
+
+
+    // Modal auto display/display only so often 
+    var modalAutoDisplay = ( $('#padModal').data('auto-display') == true );
+    if ( modalAutoDisplay) {
+
+        // See if modal has display interval(i). If so, only display every i days.
+        // Check for cookie set.
+        var modalDelayCookieName = $('#padModal').data('delay-cookie-name');
+        var modalDisplayInterval = parseInt( $('#padModal').data('display-interval') );
+
+        if ( modalDelayCookieName != undefined ) {
+            var modalDelayCookieValue = Cookies.get( modalDelayCookieName );
+            if ( modalDelayCookieValue == undefined ) {
+                // No cookie set, set it and display modal
+                Cookies.set( modalDelayCookieName, 'true', { expires: modalDisplayInterval });
+
+                var modalDisplayDelay = parseInt( $('#padModal').data('auto-display-delay') );
+
+                var displayInterval = setInterval( function() {
+                    $('#padModal').modal('show');
+                    clearInterval( displayInterval );
+                }, modalDisplayDelay * 1000 );
+            }
+
+        }
+    }
+
 
     // Start carousel
     $('.carousel-item-container .pad-product-panel').hover( function() {

@@ -915,6 +915,15 @@ class PAD_Shortcodes
         /** @var  $class */
         /** @var  $title */
         /** @var  $link_text */
+        /** @var  $close_on_click */
+        /** @var  $open_on_scroll */
+        /** @var  $distance_from_bottom */
+        /** @var  $auto_display */
+        /** @var  $auto_display_delay */
+        /** @var  $display_interval */
+        /** @var  $delay_cookie_name */
+
+
 
 
         $atts_actual = shortcode_atts(
@@ -922,7 +931,16 @@ class PAD_Shortcodes
                 'id'    => 'padModal',
                 'class' => '',
                 'title'     => 'PAD Modal',
-                'link_text' => 'Open Modal'
+                'link_text' => 'Open Modal',
+                'close_on_click' => '',
+                'display_interval' => '',
+                'auto_display' => false,
+                'auto_display_delay' => 0,
+                'delay_cookie_name' => '',
+                'display_interval' => 0,
+                'delay_cookie_name' => '',
+                'open_on_scroll' => false,
+                'distance_from_bottom' => 0
             ),
             $atts );
 
@@ -931,7 +949,7 @@ class PAD_Shortcodes
 
         $output = '
             <a href="#" data-toggle="modal" data-target="#' . $id. '">' . $link_text . '</a>
-            <div class="modal fade" id="' .  $id . '" class="' . $class .  '" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+            <div class="modal fade" id="' .  $id . '" class="' . $class .  '" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true" data-close-on-click="' . $close_on_click . '" data-auto-display="' . $auto_display . '" data-auto-display-delay="' . $auto_display_delay . '" data-display-interval="' . $display_interval . '" data-delay-cookie-name="' .$delay_cookie_name  . '">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">

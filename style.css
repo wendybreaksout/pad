@@ -1849,6 +1849,9 @@ object {
   margin-bottom: 2.5em;
   margin-right: 4em; }
 
+.pad-featured-article-image.horizontal-left img {
+  margin-top: 0 !important; }
+
 .center-text {
   text-align: center; }
 
@@ -2146,7 +2149,8 @@ object {
   margin-right: 25px;
   margin-bottom: 25px;
   padding: 20px;
-  border: #777777 solid 1px; }
+  border: #197002 solid 2px !important;
+  border-radius: 5px; }
   @media (max-width: 768px) {
     .pullquote1-container {
       width: 100%;

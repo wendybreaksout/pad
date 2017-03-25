@@ -42,7 +42,7 @@ else {
 		// TODO: make thumbnail size configurable
 		// the_post_thumbnail((array(200,200))) ;
 		$image = new Pad_Image();
-		$formatted_image = $image->get_image( get_the_ID());
+		$formatted_image = $image->get_image( get_the_ID(), 'horizontal-left');
 
         // Show thumbnail if there is one and only if display mode is not full text.
 		if ( !empty ( $formatted_image ) && $show_full_text === false ) {

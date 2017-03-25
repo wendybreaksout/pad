@@ -17,7 +17,7 @@ class Pad_Image
     {
     }
 
-    public function get_image( $id ) {
+    public function get_image( $id, $class = '' ) {
 
         $image_html = '';
         
@@ -36,7 +36,7 @@ class Pad_Image
             $post_url = get_the_permalink();
 
             $image_html = '
-                <div class="view overlay hm-green-strong pad-featured-article-image">
+                <div class="view overlay hm-green-strong pad-featured-article-image ' .  $class . '">
                     <a href="' . $post_url . '">' . $post_image_html . '
                   </a>
                 </div>';

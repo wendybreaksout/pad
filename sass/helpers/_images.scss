@@ -6,6 +6,19 @@
   margin-top: $product_card_image_height / 2 ;
   transform: translateY(-50%);
 
+  @media screen and ( max-width: 1200px  ) {
+    margin-top: $product_card_image_height_md /2 !important;
+  }
+
+  @media screen and ( max-width: 992px  ) {
+    margin-top: $product_card_image_height_sm / 2 !important;
+
+  }
+
+  @media screen and ( max-width: 780px  ) {
+    margin-top: $product_card_image_height_xs / 2 !important;
+  }
+
 }
 
 .fillwidth.pad-hover-caption-image {

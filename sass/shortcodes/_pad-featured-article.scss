@@ -18,6 +18,19 @@
 
   .pad-featured-article-image {
     height: 300px;
+
+    @media screen and ( max-width: 1200px  ) {
+      height: 244px !important;
+    }
+
+    @media screen and ( max-width: 992px  ) {
+      height: 183px !important;
+    }
+
+    @media screen and ( max-width: 780px  ) {
+      height: 500px !important;
+    }
+
   }
 
 

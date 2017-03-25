@@ -116,8 +116,11 @@
       height: 183px !important;
     }
 
-    @media screen and ( max-width: 780px  ) {
-      height: 500px !important;
+    &:not(.pad-carousel-slide ) {
+      @media screen and ( max-width: 780px  ) {
+        height: 500px !important;
+
+      }
     }
 
 
@@ -219,6 +222,15 @@
   }
 }
 
+.carousel-item-container .pad-carousel-slide img {
+  @media screen and ( max-width: 780px  ) {
+    margin-top: $product_card_image_height_sm / 2 !important;
+  }
+}
+
+.pad-product-carousel {
+  margin: 50px 0;
+}
 
 
 @media( max-width: $page-builder-product-tablet-desktop  ) {

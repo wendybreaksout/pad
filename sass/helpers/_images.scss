@@ -19,6 +19,7 @@
     margin-top: $product_card_image_height_xs / 2 !important;
   }
 
+
 }
 
 .fillwidth.pad-hover-caption-image {
@@ -60,6 +61,10 @@
   margin-right: 4em;
 }
 
+// Shims away....
 .pad-featured-article-image.horizontal-left img {
   margin-top: 0 !important;
 }
+
+
+

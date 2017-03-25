@@ -1988,7 +1988,7 @@ object {
       .pad-product .pad-product-hover-slide {
         height: 183px !important; } }
     @media screen and (max-width: 780px) {
-      .pad-product .pad-product-hover-slide {
+      .pad-product .pad-product-hover-slide:not(.pad-carousel-slide) {
         height: 500px !important; } }
     .pad-product .pad-product-hover-slide img {
       position: absolute;
@@ -2044,6 +2044,13 @@ object {
     margin-top: 15px; }
   .carousel-item-container .card-block .pad-product-button {
     font-size: 0.8em; }
+
+@media screen and (max-width: 780px) {
+  .carousel-item-container .pad-carousel-slide img {
+    margin-top: 91.5px !important; } }
+
+.pad-product-carousel {
+  margin: 50px 0; }
 
 @media (max-width: 780px) {
   .pad-product .pad-product-hover-slide,

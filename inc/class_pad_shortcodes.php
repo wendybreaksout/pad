@@ -316,7 +316,7 @@ class PAD_Shortcodes
 
         $output = '<div class="slick-carousel-wrapper">';
 
-        $output .= '<div id="pad-product-carousel" class="pad-product-carousel">';
+        $output .= '<div class="pad-product-carousel">';
 
         foreach ( $product_slugs as $product_slug ) {
 
@@ -329,13 +329,13 @@ class PAD_Shortcodes
 
             switch ($post_type) {
                 case 'post':
-                    $output .=  do_shortcode( '[pad_post_simple  name="' . $product_slug . '" word_count="23"]') ;
+                    $output .=  do_shortcode( '[pad_post_simple  name="' . $product_slug . '" word_count="23" img_ctx_class="pad-carousel-slide"]') ;
                     break;
                 case 'page':
-                    $output .=  do_shortcode( '[pad_page_simple  name="' . $product_slug . '" word_count="23"]') ;
+                    $output .=  do_shortcode( '[pad_page_simple  name="' . $product_slug . '" word_count="23" img_ctx_class="pad-carousel-slide"]') ;
                     break;
                 case 'product':
-                    $output .=  do_shortcode( '[pad_product_simple  name="' . $product_slug . '" word_count="23"]') ;
+                    $output .=  do_shortcode( '[pad_product_simple  name="' . $product_slug . '" word_count="23" img_ctx_class="pad-carousel-slide"]') ;
                     break;
                 default:
                     break;
@@ -377,6 +377,8 @@ class PAD_Shortcodes
         /** @var  $word_count */
         /** @var  $card_group */
         /** @var  $button_text */
+        /** @var  $img_ctx_class */
+
 
 
 
@@ -390,7 +392,8 @@ class PAD_Shortcodes
                 'horizontal'          => 'false',
                 'image_right'         => 'false',
                 'word_count'          => '-1',
-                'card_group'          => ''
+                'card_group'          => '',
+                'img_ctx_class'         => ''
             ),
             $atts );
 
@@ -415,7 +418,7 @@ class PAD_Shortcodes
 
         if ( $post_query->have_posts() ) {
 
-            $output = '<div class="container-fluid pad-product">' ;
+            $output = '<div class="container-fluid pad-product pad-card-simple">' ;
 
 
             while ( $post_query->have_posts() ) : $post_query->the_post();
@@ -491,7 +494,7 @@ class PAD_Shortcodes
                 }
 
                 $image_html = '
-                        <div class="pad-product-hover-slide pad-carousel-slide">' .
+                        <div class="pad-product-hover-slide '.  $img_ctx_class .'">' .
                     $badge .
                     $gallery_images[0] .
                     '<a href="' . $post_url . '"><span class="pad-hover-caption"><span class="truncate-ellipsis">' . $post_excerpt . '</span></span></a>' .
@@ -519,7 +522,7 @@ class PAD_Shortcodes
 
 
                 $output .= '
-                    <div class="row pad-product-panel">
+                    <div class="row pad-product-panel pad-hover-caption-container">
                         <div class="col-xs-12 animated slideInLeft pad-product-card-column">
                             '  . $card_html  . '
                         </div> 

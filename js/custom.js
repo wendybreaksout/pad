@@ -45,14 +45,16 @@
     }
 
 
-    // Start carousel
-    $('.carousel-item-container .pad-product-panel').hover( function() {
+   // Hover caption effect
+    $('.pad-hover-caption-container').hover( function() {
             $( this ).find('span.pad-hover-caption').css('opacity', '1');
         },
         function(){
             $( this ).find('span.pad-hover-caption').css('opacity', '0');
         });
 
+
+    // Start carousel
 
     $('.pad-product-carousel').slick({
         infinite: true,

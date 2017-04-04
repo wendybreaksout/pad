@@ -4,3 +4,30 @@
 .bypostauthor {
 	display: block;
 }
+
+.comment {
+
+	.comment-meta {
+      color: $theme-text-color;
+      background-color: $theme-white ;
+      padding-bottom: 5px;
+
+      .comment-author {
+        text-align: left;
+        margin-left: 15px;
+        a {
+          color: $theme-text-color;
+        }
+      }
+	}
+
+    .comment-metadata {
+      text-align: left;
+      font-size: 0.9em ;
+      font-style: italic;
+      a {
+        color: $theme-text-color;
+      }
+    }
+}
+

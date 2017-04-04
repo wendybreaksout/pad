@@ -1656,6 +1656,22 @@ p.site-description {
 .bypostauthor {
   display: block; }
 
+.comment .comment-meta {
+  color: #404040;
+  background-color: #ffffff;
+  padding-bottom: 5px; }
+  .comment .comment-meta .comment-author {
+    text-align: left;
+    margin-left: 15px; }
+    .comment .comment-meta .comment-author a {
+      color: #404040; }
+.comment .comment-metadata {
+  text-align: left;
+  font-size: 0.9em;
+  font-style: italic; }
+  .comment .comment-metadata a {
+    color: #404040; }
+
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/

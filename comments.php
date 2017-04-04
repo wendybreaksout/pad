@@ -24,11 +24,28 @@ if ( post_password_required() ) {
 
 	<?php
 	// You can start editing here -- including this comment!
-	if ( have_comments() ) : ?>
+	global $post;
+	$have_comments = false;
+
+	if ( $post->ping_status == "open") {
+		$have_comments = have_comments();
+        $comments_number = get_comments_number();
+	}
+	else {
+		$comments = get_comments(array(
+                                'post_id' => $post->ID,
+                                'type' => 'comment'));
+
+        $comments_number = count( $comments );
+        $have_comments = $comments_number > 0 ? true : false ;
+	}
+
+	if ( $have_comments ) : ?>
+
 		<h2 class="comments-title">
 			<?php
 				printf( // WPCS: XSS OK.
-					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'pad' ) ),
+					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $comments_number, 'comments title', 'pad' ) ),
 					number_format_i18n( get_comments_number() ),
 					'<span>' . get_the_title() . '</span>'
 				);

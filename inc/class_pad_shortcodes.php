@@ -1245,9 +1245,9 @@ class PAD_Shortcodes
 
         $args = array(
             'post_type'      => 'attachment',
-            'post_count'     => $showposts,
+            'post_count'     => intval( $showposts ),
             'post_status'    => 'any',
-            'posts_per_page' => -1,
+            'posts_per_page' => intval( $showposts ),
             'category_name' => $cat,
         );
 

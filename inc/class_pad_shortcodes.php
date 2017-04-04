@@ -523,7 +523,7 @@ class PAD_Shortcodes
 
                 $output .= '
                     <div class="row pad-product-panel pad-hover-caption-container">
-                        <div class="col-xs-12 animated slideInLeft pad-product-card-column">
+                        <div class="col-xs-12 pad-product-card-column">
                             '  . $card_html  . '
                         </div> 
                     </div>

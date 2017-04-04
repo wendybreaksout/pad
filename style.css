@@ -2387,6 +2387,14 @@ object {
   background-color: #1f8902;
   color: #ffffff; }
 
+.pad-product-bottom-section {
+  margin-bottom: 40px; }
+  .pad-product-bottom-section .pad-product-bottom-title {
+    display: inline-block; }
+  .pad-product-bottom-section .pad-bottom-cart-button {
+    display: inline-block;
+    margin-left: 40px; }
+
 .woocommerce table.shop_table td small {
   font-weight: 700;
   font-size: 1.5em; }

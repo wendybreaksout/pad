@@ -19,3 +19,17 @@
   background-color: $theme-primary-light;
   color: $theme-white;
 }
+
+.pad-product-bottom-section {
+  margin-bottom: 40px;
+  .pad-product-bottom-title {
+    display: inline-block;
+  }
+
+  .pad-bottom-cart-button {
+    display: inline-block;
+    margin-left: 40px;
+  }
+}
+
+

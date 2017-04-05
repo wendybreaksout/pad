@@ -60,7 +60,7 @@ class PAD_Shortcodes
             array(
                 'name'                => '',
                 'badge_text'          => __('Sale', PAD_THEME_TEXTDOMAIN),
-                'image_size'          => 'medium',
+                'image_size'          => 'large',
                 'horizontal'          => 'false',
                 'image_right'         => 'false',
                 'word_count'          => '-1',

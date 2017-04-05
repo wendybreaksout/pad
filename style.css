@@ -1911,8 +1911,6 @@ object {
   position: absolute;
   right: 58px;
   bottom: 30px; }
-  .pad-featured-article .pad-article-button a {
-    font-size: 1em; }
 .pad-featured-article .pad-animate {
   z-index: 3;
   color: #d0991b;
@@ -1923,6 +1921,9 @@ object {
   padding: 0 15px 90px;
   font-size: 1.2em;
   min-height: 300px; }
+
+.pad-article-button a {
+  font-size: 16px; }
 
 .pad-product {
   box-sizing: border-box;
@@ -1978,8 +1979,6 @@ object {
     bottom: 15px;
     left: 50%;
     transform: translateX(-50%); }
-    .pad-product .pad-product-button a.btn {
-      font-size: 1.3em; }
   .pad-product .pad-product-panel {
     margin: 0; }
   .pad-product .woocommerce-Price-amount.amount {
@@ -2074,6 +2073,9 @@ object {
     height: 500px; }
   .pad-product .pad-carousel-slide {
     height: 225px; } }
+.pad-product-button a.btn {
+  font-size: 16px; }
+
 .pad-product-grid {
   box-sizing: border-box;
   padding-top: 0 !important;
@@ -2109,7 +2111,7 @@ object {
     text-align: center;
     margin-top: 10px; }
     .pad-product-grid .pad-product-button a.btn {
-      font-size: 1.3em; }
+      font-size: 16px; }
   .pad-product-grid .pad-product-panel {
     margin: 35px 0; }
   .pad-product-grid .woocommerce-Price-amount.amount {

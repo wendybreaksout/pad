@@ -38,9 +38,6 @@
     position: absolute;
     right: 58px;
     bottom: 30px;
-    a {
-      font-size: 1em;
-    }
 
   }
 
@@ -58,4 +55,10 @@
     min-height: 300px;
   }
 
+}
+
+.pad-article-button {
+  a {
+    font-size: $pad_button_font_size;
+  }
 }

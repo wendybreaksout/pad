@@ -84,9 +84,7 @@
     left: 50%;
     transform: translateX( -50% );
 
-    a.btn {
-      font-size: 1.3em;
-    }
+
 
 
   }
@@ -243,5 +241,11 @@
     .pad-carousel-slide {
       height: $product_carousel_image_height;
     }
+  }
+}
+
+.pad-product-button {
+  a.btn {
+    font-size: $pad_button_font_size ;
   }
 }

@@ -53,6 +53,10 @@ class PAD_Shortcodes
         /** @var  $image_right */
         /** @var  $word_count */
         /** @var  $card_group */
+        /** @var  $button_text */
+        /** @var  $button_url */
+
+
 
 
 
@@ -64,6 +68,8 @@ class PAD_Shortcodes
                 'horizontal'          => 'false',
                 'image_right'         => 'false',
                 'word_count'          => '-1',
+                'button_text'         =>  '',
+                'button_url'          =>  '',
                 'card_group'          => ''
             ),
             $atts );
@@ -210,6 +216,18 @@ class PAD_Shortcodes
                         </div>';
                 }
 
+                /* Handle overrides of button test and destination URL */
+                if (!empty( $button_url ) ) {
+                    $post_url = $button_url ;
+                }
+
+                if (!empty( $button_text )) {
+                    $button_content = $button_text;
+                }
+                else {
+                    $button_content = $price ;
+                }
+
                 $card_html = '
                     <div class="card hoverable pad-card-group" data-mh="'. $card_group .'">
                         ' . $image_html . '
@@ -218,7 +236,7 @@ class PAD_Shortcodes
                             <h3 class="card-title"><a href="' . $post_url . '">' . $post_title . '</a></h3>
                                 ' . $excerpt_html .  '
                             <div class="pad-product-button">                     
-                                <a href="' .  $post_url . '" class="btn pad-theme-color-bg">' .  $price . '</a>
+                                <a href="' .  $post_url . '" class="btn pad-theme-color-bg">' .  $button_content . '</a>
                             </div>
                         </div>
     

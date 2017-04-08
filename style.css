@@ -2035,6 +2035,9 @@ object {
         display: table-cell;
         text-align: center;
         vertical-align: middle; }
+        @media screen and (max-width: 992px) {
+          .pad-product .pad-product-hover-slide span.pad-hover-caption span {
+            font-size: 14px; } }
   .pad-product .pad-carousel-slide {
     height: 225px; }
   .pad-product .pad-product-horizontal-hover-slide {
@@ -2061,8 +2064,11 @@ object {
     font-size: 0.8em; }
 
 @media screen and (max-width: 780px) {
-  .carousel-item-container .pad-carousel-slide img {
+  .carousel-item-container .pad-carousel-slide img.fillwidth {
     margin-top: 91.5px !important; } }
+@media screen and (max-width: 780px) {
+  .carousel-item-container .pad-carousel-slide img.fillheight {
+    margin-top: 0 !important; } }
 
 .pad-product-carousel {
   margin: 50px 0; }

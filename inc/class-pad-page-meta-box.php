@@ -42,6 +42,11 @@ class PAD_Page_Meta_Box extends Pad_Meta_Box {
             'body_class'
         );
 
+        $this->text_input( __('CSS class to apply to the html element of this page.', PAD_THEME_TEXTDOMAIN),
+            get_post_meta( $post_ID, 'html_class', true),
+            'html_class'
+        );
+
         echo '&nbsp';
 
         $this->text_area( __('Text to display over the full width header for this page.', PAD_THEME_TEXTDOMAIN),
@@ -67,6 +72,7 @@ class PAD_Page_Meta_Box extends Pad_Meta_Box {
             return;
         }
         $this->update_meta_text( $post_id, 'body_class');
+        $this->update_meta_text( $post_id, 'html_class');
         $this->update_meta_text( $post_id, 'full_width_header_text');
 
 

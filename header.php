@@ -8,9 +8,14 @@
  *
  * @package PAD
  */
+$pad_page_html_class = get_post_meta( get_the_ID(), 'html_class', true);
+if ( is_front_page() ) {
+    $pad_page_html_class .= ' preloader-target';
+}
+
 
 ?><!DOCTYPE html>
-<html <?php if ( is_front_page()) { echo 'class="preloader-target"'; } ?><?php language_attributes();  ?>>
+<html <?php if ( !empty( $pad_page_html_class )) { echo 'class="' . $pad_page_html_class . '"'; } ?><?php language_attributes();  ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">

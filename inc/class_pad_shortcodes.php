@@ -387,7 +387,7 @@ class PAD_Shortcodes
                 'post_type'           => 'post',
                 'name'                => '',
                 'badge_text'          => '',
-                'button_text'         => 'Read',
+                'button_text'         => 'Read more',
                 'image_size'          => 'medium',
                 'horizontal'          => 'false',
                 'image_right'         => 'false',

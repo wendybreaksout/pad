@@ -42,7 +42,6 @@
       -moz-transform: translateX(-50%);
       -o-transform: translateX(-50%);
       transform: translateX(-50%);
-
       z-index: 1000;
       text-align: center;
       p {
@@ -263,6 +262,7 @@
   .home {
     #home-slider {
       .animated-greeting-text {
+        top: 40% !important;
         p {
           font-size: 0.7em;
         }

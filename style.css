@@ -2393,8 +2393,10 @@ object {
     .home #primary-menu .sub-menu a, .hero-layout #primary-menu .sub-menu a {
       background-color: #eeeeee; } }
 @media (max-width: 767px) {
-  .home #home-slider .animated-greeting-text p {
-    font-size: 0.7em; } }
+  .home #home-slider .animated-greeting-text {
+    top: 40% !important; }
+    .home #home-slider .animated-greeting-text p {
+      font-size: 0.7em; } }
 @media (min-width: 1160px) {
   .home #site-navigation.navbar-custom.affix .navbar-brand img, .hero-layout #site-navigation.navbar-custom.affix .navbar-brand img {
     margin-top: -45px; } }

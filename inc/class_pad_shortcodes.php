@@ -1257,7 +1257,7 @@ class PAD_Shortcodes
         $grid_columns = $this->calculate_grid_columns( $column ) ;
         $grid_columns = $grid_columns == 0 ? 4 : $grid_columns;
 
-        $column_class = 'col-sm-' . $grid_columns;
+        $column_class = 'col-xs-' . $grid_columns;
 
         $n_rows =  ceil( $showposts / $column ) ;
 

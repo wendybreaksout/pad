@@ -112,6 +112,7 @@ body {
   -webkit-tap-highlight-color: $theme-primary;
 }
 
+// TODO: create seperate file (_pad_archive) for this.
 .pad-archive {
 	margin-bottom: 65px;
 	overflow: hidden;
@@ -126,6 +127,12 @@ body {
             }
 		}
 	}
+	.pad-archive-excerpt-container {
+		a.btn {
+			font-size: $pad_button_font_size ;
+		}
+	}
+
 
 }
 

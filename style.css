@@ -984,6 +984,8 @@ body {
       @media (max-width: 767px) {
         .pad-archive .entry-content .pad-featured-article-image {
           max-height: 700px; } }
+  .pad-archive .pad-archive-excerpt-container a.btn {
+    font-size: 16px; }
 
 @media (max-width: 767px) {
   .pad-archive-excerpt-container {
@@ -2174,7 +2176,7 @@ object {
       vertical-align: super; }
 
 .pullquote1-container {
-  width: 33%;
+  width: 50%;
   float: left;
   font-size: 1.1em;
   font-style: italic;

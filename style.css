@@ -937,7 +937,7 @@ footer {
 .slick-carousel-wrapper {
   height: 400px;
   overflow: visible;
-  margin: 0 30px; }
+  margin: 0 30px 50px 30px; }
 
 .slick-prev:before, .slick-next:before {
   font-family: 'FontAwesome';

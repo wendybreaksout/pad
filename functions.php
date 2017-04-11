@@ -747,6 +747,19 @@ if ( class_exists( 'WooCommerce' ) ) {
 
 	add_filter('woocommerce_product_tabs', 'woo_product_terms_tab');
 
+
+    /*
+     * Set tab order in product pages
+     */
+    function pad_reordered_tabs( $tabs ) {
+        $tabs['description']['priority'] = 5;
+        $tabs['terms_tab']['priority'] = 10;
+        $tabs['reviews']['priority'] = 15;
+
+        return $tabs;
+    }
+    add_filter( 'woocommerce_product_tabs', 'pad_reordered_tabs', 98 );
+
 	/*
      * Change upsell test.
      */

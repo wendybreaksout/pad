@@ -267,6 +267,14 @@
         }
     });
 
+    // Sticky content
+    $(function () {
+        $(".sticky-top").sticky({
+            topSpacing: 90,
+            bottomSpacing: 470
+        });
+    });
+
 
 
 

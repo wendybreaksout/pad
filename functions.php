@@ -318,6 +318,13 @@ function load_vendor_scripts() {
         true
     );
 
+    wp_enqueue_script( 'pad-sticky',
+        get_template_directory_uri() . '/js/jquery.sticky.js',
+        array('jquery'),
+        wp_get_theme()->get('Version'),
+        true
+    );
+
 
     wp_enqueue_script( 'pad-custom-jsr',
 		get_template_directory_uri() . '/js/custom.js',

@@ -338,36 +338,39 @@ class PAD_Shortcodes
 
         foreach ( $product_slugs as $product_slug ) {
 
+            if ( empty( $product_slug )) continue;
 
-
-            $output .= '<div class="carousel-item-container">';
 
             // Determine post type and use appropriate shortcode.
             $post_type = $this->get_slug_post_type( $product_slug );
 
+            $sc_output = '';
+
             switch ($post_type) {
                 case 'post':
-                    $output .=  do_shortcode( '[pad_post_simple  name="' . $product_slug . '" word_count="23" img_ctx_class="pad-carousel-slide"]') ;
+                    $sc_output .=  do_shortcode( '[pad_post_simple  name="' . $product_slug . '" word_count="23" img_ctx_class="pad-carousel-slide"]') ;
                     break;
                 case 'page':
-                    $output .=  do_shortcode( '[pad_page_simple  name="' . $product_slug . '" word_count="23" img_ctx_class="pad-carousel-slide"]') ;
+                    $sc_output .=  do_shortcode( '[pad_page_simple  name="' . $product_slug . '" word_count="23" img_ctx_class="pad-carousel-slide"]') ;
                     break;
                 case 'product':
-                    $output .=  do_shortcode( '[pad_product_simple  name="' . $product_slug . '" word_count="23" img_ctx_class="pad-carousel-slide"]') ;
+                    $sc_output .=  do_shortcode( '[pad_product_simple  name="' . $product_slug . '" word_count="23" img_ctx_class="pad-carousel-slide"]') ;
                     break;
+                case false:
                 default:
+                    // wrong post type, non-existent slug
                     break;
             }
 
+            if ( !empty( $sc_output )) {
+                $output .= '<div class="carousel-item-container">' . $sc_output . '</div>';
 
-            $output .= '</div>' ;
+            }
 
         }
 
-        $output .= '</div>' ;
-        $output .= '</div>' ;
-
-
+        $output .= '</div>' ; // end carousel
+        $output .= '</div>' ; // end wrapper
 
 
         return $output ;

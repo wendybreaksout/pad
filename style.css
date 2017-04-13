@@ -390,6 +390,14 @@ dd {
       font-size: 0.5em;
       padding-top: 0.9em; }
 
+/*
+ * Remove bullet from woocommerce checkout page
+*/
+ul.wc_payment_methods {
+  list-style-type: none; }
+  ul.wc_payment_methods li.wc_payment_method {
+    list-style-type: none; }
+
 img {
   height: auto;
   /* Make sure images are scaled correctly. */

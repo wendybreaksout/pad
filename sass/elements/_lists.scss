@@ -39,3 +39,13 @@ dd {
     }
   }
 }
+
+/*
+ * Remove bullet from woocommerce checkout page
+*/
+ul.wc_payment_methods {
+  list-style-type: none;
+  li.wc_payment_method {
+    list-style-type: none;
+  }
+}

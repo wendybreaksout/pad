@@ -109,6 +109,14 @@ class PAD_Shortcodes
                 global $product;
                 $attachment_ids = $product->get_gallery_attachment_ids();
 
+                /* Handle overrides of button test and destination URL */
+                if (!empty( $button_url ) ) {
+                    $post_url = $button_url ;
+                }
+                else {
+                    $post_url = get_the_permalink();
+                }
+
                 $gallery_images = array();
                 $attachment_count = 0;
                 $attachments_to_display = 2;
@@ -121,7 +129,7 @@ class PAD_Shortcodes
                     $data_str = ' data-width="' . $img_width . '" data-height="' . $img_height . '" />';
 
                     $post_image_html = str_replace('/>', $data_str, $post_image_html );
-                    $post_image_html = '<a href="' . get_permalink( $id ) . '">' . $post_image_html .  '</a>';
+                    $post_image_html = '<a href="' . $post_url . '">' . $post_image_html .  '</a>';
 
 
 
@@ -149,13 +157,7 @@ class PAD_Shortcodes
 
                 $post_title= get_the_title();
 
-                /* Handle overrides of button test and destination URL */
-                if (!empty( $button_url ) ) {
-                    $post_url = $button_url ;
-                }
-                else {
-                    $post_url = get_the_permalink();
-                }
+
 
 
                 $post_excerpt = get_the_excerpt();

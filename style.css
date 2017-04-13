@@ -2449,9 +2449,14 @@ object {
       background-color: #eeeeee; } }
 @media (max-width: 767px) {
   .home #home-slider .animated-greeting-text {
-    top: 40% !important; }
+    top: 40%; }
     .home #home-slider .animated-greeting-text p {
       font-size: 0.7em; } }
+@media (max-width: 321px) {
+  .home #home-slider .animated-greeting-text {
+    top: 35% !important; }
+    .home #home-slider .animated-greeting-text p {
+      font-size: 0.6em; } }
 @media (min-width: 1160px) {
   .home #site-navigation.navbar-custom.affix .navbar-brand img, .hero-layout #site-navigation.navbar-custom.affix .navbar-brand img {
     margin-top: -45px; } }

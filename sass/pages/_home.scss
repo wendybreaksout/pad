@@ -262,7 +262,7 @@
   .home {
     #home-slider {
       .animated-greeting-text {
-        top: 40% !important;
+        top: 40%;
         p {
           font-size: 0.7em;
         }
@@ -271,6 +271,20 @@
     }
   }
 
+}
+
+@media( max-width: $bp-mobile-portrait  ) {
+  .home {
+    #home-slider {
+      .animated-greeting-text {
+        top: 35% !important;
+        p {
+          font-size: 0.6em;
+        }
+      }
+
+    }
+  }
 }
 
 @media ( min-width: $bp-adjust-logo-1 ) {

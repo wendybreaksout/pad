@@ -332,7 +332,7 @@ class PAD_Shortcodes
         extract( $atts_actual );
         $product_slugs = explode(' ', $products );
 
-        $output = '<div class="slick-carousel-wrapper">';
+            $output = '<div class="slick-carousel-wrapper">';
 
         $output .= '<div class="pad-product-carousel">';
 
@@ -364,7 +364,6 @@ class PAD_Shortcodes
 
             if ( !empty( $sc_output )) {
                 $output .= '<div class="carousel-item-container">' . $sc_output . '</div>';
-
             }
 
         }

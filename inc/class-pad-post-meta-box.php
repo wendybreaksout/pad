@@ -6,12 +6,12 @@
  * Date: 10/12/16
  * Time: 3:38 PM
  */
-class PAD_Page_Meta_Box extends Pad_Meta_Box {
+class PAD_Post_Meta_Box extends Pad_Meta_Box {
 
     public function __construct() {
-        $this->setPostType( 'page' );
+        $this->setPostType( 'post' );
         $this->setMetaBoxID(  'pad_theme_meta_box' );
-        $this->setMetaBoxTitle(  __( 'PAD Theme Page Options', PAD_THEME_TEXTDOMAIN ) );
+        $this->setMetaBoxTitle(  __( 'PAD Theme Post Options', PAD_THEME_TEXTDOMAIN ) );
         $this->setNonceId( 'pad_meta_box_mb_nonce');
         $this->init_tooltips();
     }
@@ -35,29 +35,12 @@ class PAD_Page_Meta_Box extends Pad_Meta_Box {
          */
         echo '<div class="pad_settings_container">';
 
-        // $this->section_heading(__('PAD Theme Page Options', PAD_THEME_TEXTDOMAIN), 'pad-mb-theme-options');
-
-        $this->text_input( __('CSS class to apply to the body element of this page.', PAD_THEME_TEXTDOMAIN),
-            get_post_meta( $post_ID, 'body_class', true),
-            'body_class'
-        );
-
-        $this->text_input( __('CSS class to apply to the html element of this page.', PAD_THEME_TEXTDOMAIN),
-            get_post_meta( $post_ID, 'html_class', true),
-            'html_class'
-        );
-
         $this->text_input( __('Carousel title (for when the title is too long to fit in the carousel card title area.)', PAD_THEME_TEXTDOMAIN),
             get_post_meta( $post_ID, 'carousel_title', true),
             'carousel_title'
         );
 
         echo '&nbsp';
-
-        $this->text_area( __('Text to display over the full width header for this page.', PAD_THEME_TEXTDOMAIN),
-            get_post_meta( $post_ID, 'full_width_header_text', true), 5, 50,
-            'full_width_header_text'
-        );
 
 
         echo '</div>';
@@ -76,13 +59,9 @@ class PAD_Page_Meta_Box extends Pad_Meta_Box {
         if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
             return;
         }
-        $this->update_meta_text( $post_id, 'body_class');
-        $this->update_meta_text( $post_id, 'html_class');
+
         $this->update_meta_text( $post_id, 'carousel_title');
-        $this->update_meta_text( $post_id, 'full_width_header_text');
-
-
-
+        
     }
 
     protected function init_tooltips() {

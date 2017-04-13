@@ -576,6 +576,10 @@ require get_template_directory() . '/inc/class-pad-image.php';
  */
 require get_template_directory() . '/inc/class-pad-meta-box.php';
 require get_template_directory() . '/inc/class-pad-page-meta-box.php';
+require get_template_directory() . '/inc/class-pad-post-meta-box.php';
+require get_template_directory() . '/inc/class-pad-product-meta-box.php';
+
+
 
 switch ( get_current_post_type() ) {
     case 'page':
@@ -584,6 +588,22 @@ switch ( get_current_post_type() ) {
         add_action( 'add_meta_boxes', array($page_meta_box, 'meta_box_init' ));
         add_action( 'admin_menu', array( $page_meta_box, 'remove_meta_boxes' ));
         add_action( 'save_post', array( $page_meta_box, 'post_meta_save' ));
+        break;
+
+    case 'post':
+    case 'edit-post':
+        $post_meta_box = new PAD_Post_Meta_Box();
+        add_action( 'add_meta_boxes', array($post_meta_box, 'meta_box_init' ));
+        add_action( 'admin_menu', array( $post_meta_box, 'remove_meta_boxes' ));
+        add_action( 'save_post', array( $post_meta_box, 'post_meta_save' ));
+        break;
+
+    case 'product':
+    case 'edit-product':
+        $product_meta_box = new PAD_Product_Meta_Box();
+        add_action( 'add_meta_boxes', array($product_meta_box, 'meta_box_init' ));
+        add_action( 'admin_menu', array( $product_meta_box, 'remove_meta_boxes' ));
+        add_action( 'save_post', array( $product_meta_box, 'post_meta_save' ));
         break;
 
 

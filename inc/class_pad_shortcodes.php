@@ -503,9 +503,17 @@ class PAD_Shortcodes
                     error_log(__FILE__ . ' ' . __LINE__ . ': ' . __('No images for post.', PAD_THEME_TEXTDOMAIN) );
                 }
 
+                $short_title = get_post_meta( get_the_ID(), 'carousel_title', true );
 
-                $post_title= get_the_title();
+                if ( !empty( $short_title )) {
+                    $post_title = $short_title;
+                }
+                else {
+                    $post_title= get_the_title();
+                }
+
                 $post_url = get_the_permalink();
+
 
                 $post_excerpt = get_the_excerpt();
 

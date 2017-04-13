@@ -148,7 +148,15 @@ class PAD_Shortcodes
                 }
 
                 $post_title= get_the_title();
-                $post_url = get_the_permalink();
+
+                /* Handle overrides of button test and destination URL */
+                if (!empty( $button_url ) ) {
+                    $post_url = $button_url ;
+                }
+                else {
+                    $post_url = get_the_permalink();
+                }
+
 
                 $post_excerpt = get_the_excerpt();
                 if ( $word_count === 0 ) {
@@ -216,10 +224,6 @@ class PAD_Shortcodes
                         </div>';
                 }
 
-                /* Handle overrides of button test and destination URL */
-                if (!empty( $button_url ) ) {
-                    $post_url = $button_url ;
-                }
 
                 if (!empty( $button_text )) {
                     $button_content = $button_text;

@@ -1,0 +1,14 @@
+
+// Fix the checkbox for T&C on checkout page.
+input#terms {
+  margin-top: 10px;
+}
+
+.wc-terms-and-conditions .woocommerce-form__label-for-checkbox {
+  span {
+    margin-left: 20px;
+  }
+  span.required {
+    margin-left: 0;
+  }
+}

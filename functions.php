@@ -643,6 +643,11 @@ add_filter('excerpt_more', 'new_excerpt_more');
 add_action( 'after_setup_theme', 'woocommerce_support' );
 function woocommerce_support() {
     add_theme_support( 'woocommerce' );
+
+	// TODO: add options for woo commerce gallery.
+	// add_theme_support( 'wc-product-gallery-zoom' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
+	// add_theme_support( 'wc-product-gallery-slider' );
 }
 
 
@@ -721,16 +726,15 @@ if ( class_exists( 'WooCommerce' ) ) {
 
 			global $post;
 
-			$terms = get_the_terms($post->ID, 'product_cat');
 
-			foreach ($terms as $term) {
-				if ($term->slug == 'house-plans') {
-					$tabs['terms_tab'] = array(
-						'title' => __('Requirements & Terms', 'woocommerce'),
-						'priority' => 10,
-						'callback' => 'woo_product_terms_content'
-					);
-				}
+			$terms_page = get_post_meta( $post->ID, 'pad_terms_and_conditions_page', true);
+
+			if (!empty( $terms_page)) {
+				$tabs['terms_tab'] = array(
+					'title' => __('Requirements & Terms', 'woocommerce'),
+					'priority' => 10,
+					'callback' => 'woo_product_terms_content'
+				);
 			}
 
 		}
@@ -743,19 +747,28 @@ if ( class_exists( 'WooCommerce' ) ) {
 	function woo_product_terms_content()
 	{
 
+		global $post ;
+
+		$terms_page = get_post_meta( $post->ID, 'pad_terms_and_conditions_page', true);
+
+		if (empty( $terms_page )) {
+			_e('There is no terms and conditions page for this product', PAD_THEME_TEXTDOMAIN);
+			return;
+		}
+
 		$args = array(
 			'post_type' => 'page',
 			'post_status' => 'publish',
 			'post_count' => 1,
 			'posts_per_page' => 1,
-			'name' => 'plan-requirements'
+			'ID' => $terms_page
 		);
 
 		$page_query = new WP_Query($args);
 
 		if ($page_query->have_posts()) {
 
-			while ($page_query->have_posts()) : $page_query->the_post();
+			while ( $page_query->have_posts() ) : $page_query->the_post();
 				the_content();
 			endwhile;
 		}
@@ -772,9 +785,17 @@ if ( class_exists( 'WooCommerce' ) ) {
      * Set tab order in product pages
      */
     function pad_reordered_tabs( $tabs ) {
-        $tabs['description']['priority'] = 5;
-        $tabs['terms_tab']['priority'] = 10;
-        $tabs['reviews']['priority'] = 15;
+
+		if ( isset( $tabs['description'])) {
+			$tabs['description']['priority'] = 5;
+		}
+		if (isset($tabs['terms_tab'])) {
+			$tabs['terms_tab']['priority'] = 10;
+		}
+		if (isset($tabs['reviews'])) {
+			$tabs['reviews']['priority'] = 15;
+		}
+
 
         return $tabs;
     }

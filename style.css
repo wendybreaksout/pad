@@ -2036,12 +2036,12 @@ object {
     bottom: 15px;
     left: 50%;
     transform: translateX(-50%); }
+    .pad-product .pad-product-button ins {
+      background: transparent; }
   .pad-product .pad-product-panel {
     margin: 0; }
   .pad-product .woocommerce-Price-amount.amount {
-    background-color: #197002; }
-    .pad-product .woocommerce-Price-amount.amount:hover {
-      background-color: #1f8902; }
+    background-color: transparent; }
   .pad-product .pad-product-hover-slide {
     position: relative;
     height: 300px;
@@ -2460,6 +2460,14 @@ object {
 @media (min-width: 1160px) {
   .home #site-navigation.navbar-custom.affix .navbar-brand img, .hero-layout #site-navigation.navbar-custom.affix .navbar-brand img {
     margin-top: -45px; } }
+input#terms {
+  margin-top: 10px; }
+
+.wc-terms-and-conditions .woocommerce-form__label-for-checkbox span {
+  margin-left: 20px; }
+.wc-terms-and-conditions .woocommerce-form__label-for-checkbox span.required {
+  margin-left: 0; }
+
 .woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover {
   background-color: #1f8902;
   color: #ffffff; }

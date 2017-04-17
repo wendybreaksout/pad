@@ -84,6 +84,9 @@
     left: 50%;
     transform: translateX( -50% );
 
+    ins {
+      background: transparent;
+    }
 
 
 
@@ -95,10 +98,8 @@
 
 
   .woocommerce-Price-amount.amount {
-    background-color: $theme-primary;
-    &:hover {
-      background-color: $theme-primary-light;
-    }
+    background-color: transparent;
+
   }
 
   .pad-product-hover-slide {

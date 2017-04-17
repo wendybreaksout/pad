@@ -42,6 +42,13 @@ class PAD_Product_Meta_Box extends Pad_Meta_Box {
 
         echo '&nbsp';
 
+        $this->page_select( __('Terms & Conditions Page',
+            PAD_THEME_TEXTDOMAIN) ,
+            get_post_meta( $post_ID, 'pad_terms_and_conditions_page', true),
+            'pad_terms_and_conditions_page' );
+
+
+
 
         echo '</div>';
 
@@ -61,7 +68,8 @@ class PAD_Product_Meta_Box extends Pad_Meta_Box {
         }
 
         $this->update_meta_text( $post_id, 'carousel_title');
-        
+        $this->update_meta_page_reference( $post_id, 'pad_terms_and_conditions_page');
+
     }
 
     protected function init_tooltips() {

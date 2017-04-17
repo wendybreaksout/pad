@@ -41,7 +41,7 @@ abstract class Pad_Meta_Box {
 	 * Class constructor
 	 */
 	public function __constructor() {
-		$this->nothing_selected = __('-- Choose one --', GUESTABA_HSP_TEXTDOMAIN );
+		$this->nothing_selected = __('-- Choose one --', PAD_THEME_TEXTDOMAIN );
 
 	}
 
@@ -401,7 +401,7 @@ abstract class Pad_Meta_Box {
 						));
 
 					if ( $post_id == false ) {
-						error_log( __FILE__ . ',' . __LINE__ . ':' . __('Could not add room location post.', GUESTABA_HSP_TEXTDOMAIN) );
+						error_log( __FILE__ . ',' . __LINE__ . ':' . __('Could not add room location post.', PAD_THEME_TEXTDOMAIN) );
 					}
 					else {
 						// $ids[] = $post_id;
@@ -832,7 +832,7 @@ abstract class Pad_Meta_Box {
 
 		$ul .= '</ul>';
 		$ul .= '<div class="gst-sort-edit-add-container">';
-		$ul .= '<button type="button" title="' . $this->get_tooltip( 'add_button' ) . '" class="' . $add_button_class . '" id="' . $name . 'add-button" formaction="javascript:void(0)">' . __( '+', GUESTABA_HSP_TEXTDOMAIN ) . '</button>';
+		$ul .= '<button type="button" title="' . $this->get_tooltip( 'add_button' ) . '" class="' . $add_button_class . '" id="' . $name . 'add-button" formaction="javascript:void(0)">' . __( '+', PAD_THEME_TEXTDOMAIN ) . '</button>';
 		$ul .= '<input type="hidden" id="'. $name . '-template" name="'. $name . '-template" class="gst_clone_template" value="'. $li_encoded . '">';
 		$ul .= '</div>';
 		$ul .= '</div>';
@@ -867,7 +867,7 @@ abstract class Pad_Meta_Box {
 	 * @return string
 	 */
 	protected function null_option() {
-		$option_tag = '<option value="">' .  __('--Choose One--', GUESTABA_HSP_TEXTDOMAIN ) . '</option>';
+		$option_tag = '<option value="">' .  __('--Choose One--', PAD_THEME_TEXTDOMAIN ) . '</option>';
 		return $option_tag;
 	}
 

@@ -746,7 +746,6 @@ if ( class_exists( 'WooCommerce' ) ) {
 
 	function woo_product_terms_content()
 	{
-
 		global $post ;
 
 		$terms_page = get_post_meta( $post->ID, 'pad_terms_and_conditions_page', true);
@@ -761,7 +760,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 			'post_status' => 'publish',
 			'post_count' => 1,
 			'posts_per_page' => 1,
-			'ID' => intval( $terms_page )
+			'page_id' => intval( $terms_page )
 		);
 
 		$page_query = new WP_Query($args);

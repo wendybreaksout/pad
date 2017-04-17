@@ -761,7 +761,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 			'post_status' => 'publish',
 			'post_count' => 1,
 			'posts_per_page' => 1,
-			'ID' => $terms_page
+			'ID' => intval( $terms_page )
 		);
 
 		$page_query = new WP_Query($args);

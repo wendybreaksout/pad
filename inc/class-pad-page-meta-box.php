@@ -79,7 +79,7 @@ class PAD_Page_Meta_Box extends Pad_Meta_Box {
         $this->update_meta_text( $post_id, 'body_class');
         $this->update_meta_text( $post_id, 'html_class');
         $this->update_meta_text( $post_id, 'carousel_title');
-        $this->update_meta_text( $post_id, 'full_width_header_text');
+        $this->update_meta_text_html( $post_id, 'full_width_header_text');
 
 
 

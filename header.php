@@ -203,24 +203,32 @@ $pad_full_width_header_text = get_post_meta( get_the_ID(), 'full_width_header_te
             </div>
         </div> <!-- container -->
     </nav><!-- #site-navigation -->
-    <div id="header-full-width" class="container-fluid header-full-width">
-        <div class="row">
-                <?php
-                if ( is_active_sidebar('header_fullwidth_widget_area')) {
-                    dynamic_sidebar('header_fullwidth_widget_area');
-                    if ( !empty( $pad_full_width_header_text )) {
-                        ?>
-                        <div class="full-width-header-text">
-                            <p>
-                                <?php echo $pad_full_width_header_text; ?>
-                            </p>
-                        </div>
-                        <?php
+    <?php
+        $hide_fullwidth_header = get_post_meta( $post_ID, 'hide_fullwidth_header', true);
+        if ( $hide_fullwidth_header == "no") {
+            ?>
+            <div id="header-full-width" class="container-fluid header-full-width">
+                <div class="row">
+                    <?php
+                    if ( is_active_sidebar('header_fullwidth_widget_area')) {
+                        dynamic_sidebar('header_fullwidth_widget_area');
+                        if ( !empty( $pad_full_width_header_text )) {
+                            ?>
+                            <div class="full-width-header-text">
+                                <p>
+                                    <?php echo $pad_full_width_header_text; ?>
+                                </p>
+                            </div>
+                            <?php
+                        }
                     }
-                }
-                ?>
+                    ?>
+                </div>
             </div>
-    </div>
+            <?php
+        }
+    ?>
+
 
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

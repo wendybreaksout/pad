@@ -58,6 +58,10 @@ class PAD_Page_Meta_Box extends Pad_Meta_Box {
             get_post_meta( $post_ID, 'full_width_header_text', true), 5, 50,
             'full_width_header_text'
         );
+        
+        $choices[0] = array( 'label' => 'Yes', 'value' => 'yes' );
+        $choices[1] = array( 'label' => 'No', 'value' => 'no' );
+        $this->radio(__('Hide fullwidth header widget area.', PAD_THEME_TEXTDOMAIN), get_post_meta( $post_ID, 'hide_fullwidth_header', true), $choices, 'hide_fullwidth_header', 'no' );
 
 
         echo '</div>';
@@ -80,6 +84,7 @@ class PAD_Page_Meta_Box extends Pad_Meta_Box {
         $this->update_meta_text( $post_id, 'html_class');
         $this->update_meta_text( $post_id, 'carousel_title');
         $this->update_meta_text_html( $post_id, 'full_width_header_text');
+        $this->update_meta_text( $post_id, 'hide_fullwidth_header');
 
 
 

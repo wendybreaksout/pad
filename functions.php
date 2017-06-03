@@ -8,7 +8,7 @@
  */
 
 if (!defined('PAD_THEME_VERSION'))
-	define('PAD_THEME_VERSION', '0.0.1');
+	define('PAD_THEME_VERSION', '0.0.2');
 
 if (!defined('PAD_THEME_OPTIONS_NAME'))
 	define('PAD_THEME_OPTIONS_NAME', 'pad_theme_settings');

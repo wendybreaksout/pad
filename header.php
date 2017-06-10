@@ -204,7 +204,7 @@ $pad_full_width_header_text = get_post_meta( get_the_ID(), 'full_width_header_te
         </div> <!-- container -->
     </nav><!-- #site-navigation -->
     <?php
-        $hide_fullwidth_header = get_post_meta( $post_ID, 'hide_fullwidth_header', true);
+        $hide_fullwidth_header = get_post_meta( get_the_ID(), 'hide_fullwidth_header', true);
         if ( $hide_fullwidth_header == "no") {
             ?>
             <div id="header-full-width" class="container-fluid header-full-width">

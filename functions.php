@@ -8,7 +8,7 @@
  */
 
 if (!defined('PAD_THEME_VERSION'))
-	define('PAD_THEME_VERSION', '0.0.2');
+	define('PAD_THEME_VERSION', '0.0.3');
 
 if (!defined('PAD_THEME_OPTIONS_NAME'))
 	define('PAD_THEME_OPTIONS_NAME', 'pad_theme_settings');
@@ -188,7 +188,7 @@ add_action( 'widgets_init', 'pad_widgets_init' );
  * Enqueue scripts and styles.
  */
 function pad_scripts() {
-	wp_enqueue_style( 'pad-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'pad-style', get_stylesheet_directory_uri() . '/style.min.css' );
 
 	wp_enqueue_script( 'pad-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 

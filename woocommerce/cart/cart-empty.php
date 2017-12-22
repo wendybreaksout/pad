@@ -13,7 +13,7 @@
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 2.0.0
+ * @version 3.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -22,20 +22,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 wc_print_notices();
 
-?>
+/**
+ * @hooked wc_empty_cart_message - 10
+ */
+do_action( 'woocommerce_cart_is_empty' );
 
-<p class="cart-empty">
-	<?php _e( 'Your cart is currently empty.', 'woocommerce' ) ?>
-</p>
-
-<?php do_action( 'woocommerce_cart_is_empty' ); ?>
-
-<?php if ( wc_get_page_id( 'shop' ) > 0 ) :?>
-
+if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
 	<?php
-    /*
-     * TODO: The strings and urls used in this code segement should be made to be configurable.
-     */
+	/*
+	 * TODO: The strings and urls used in this code segement should be made to be configurable.
+	 */
 	$button_text = __('Continue shopping', PAD_THEME_TEXTDOMAIN);
 	$site_url = get_site_url();
 	if ( $_SERVER['HTTP_REFERER'] ===  $site_url . '/books-plans/' ) {
@@ -45,9 +41,9 @@ wc_print_notices();
 		$button_text = __('Return to Workshops', PAD_THEME_TEXTDOMAIN);
 	}
 	?>
-	<p class="return-to-shop">
-		<a class="button wc-backward" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
-			<?php echo $button_text ; ?>
-		</a>
-	</p>
+    <p class="return-to-shop">
+        <a class="button wc-backward" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
+	        <?php echo $button_text ; ?>
+        </a>
+    </p>
 <?php endif; ?>

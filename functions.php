@@ -8,7 +8,7 @@
  */
 
 if (!defined('PAD_THEME_VERSION'))
-	define('PAD_THEME_VERSION', '0.0.5');
+	define('PAD_THEME_VERSION', '0.0.7');
 
 if (!defined('PAD_THEME_OPTIONS_NAME'))
 	define('PAD_THEME_OPTIONS_NAME', 'pad_theme_settings');
@@ -649,6 +649,15 @@ function woocommerce_support() {
 	add_theme_support( 'wc-product-gallery-lightbox' );
 	// add_theme_support( 'wc-product-gallery-slider' );
 }
+
+add_filter( 'woocommerce_get_image_size_gallery_thumbnail', function( $size ) {
+	return array(
+		'width'  => 190,
+		'height' => 190,
+		'crop'   => 1,
+	);
+} );
+
 
 
 function pad_account_menu_html()

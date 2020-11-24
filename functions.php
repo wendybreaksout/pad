@@ -904,6 +904,27 @@ function set_client_configuration () {
     ));
 }
 
+/**
+ *  Place pad product bottom section after tabs. 
+ */
+add_action('woocommerce_product_after_tabs', 'pad_woocommerce_product_after_tabs');
+function pad_woocommerce_product_after_tabs () {
+ ?>
+ 	<div class="pad-product-bottom-section">
+     <?php
+     global $post ;
+     ?>
+     <h3 class="pad-product-bottom-title"><?php  echo $post->post_title ; ?></h3>
+     <div class="pad-bottom-cart-button">
+       <?php
+         $sc= do_shortcode('[add_to_cart id="'. $post->ID . '" style="border: none; padding: 0;"]');
+         echo $sc;
+       ?>
+     </div>
+   </div>
+ <?php
+ }
+
 
 
 
